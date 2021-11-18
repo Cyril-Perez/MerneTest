@@ -3,10 +3,11 @@ const UserModel = require("../models/user.models")
 //objectId verifie si notre id dans la requete parmas est bien dans notre base de données
 const ObjectID = require("mongoose").Types.ObjectId
 
-module.exports.readPost = (req, res) => {
+module.exports.readPost = (req, res) => { 
   PostModel.find((err, docs) => {
-    if (!err)
-      res.send(docs)
+    if (!err){
+       return res.send(docs)
+    }     
     else console.log("Récuperation des données échouées " + err);
   }).sort({ createdAte: -1 })
 }
