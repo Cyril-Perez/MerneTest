@@ -10,6 +10,16 @@ const MIME_TYPES = {
 const storage = multer.diskStorage({
     //destination dossier
     destination : (req, file, callback)=>{
+        console.log(file);
+        if (
+            file.mimetype != "image/jpg" &&
+            file.mimetype != "image/png" &&
+            file.mimetype != "image/jpeg"
+            ){
+                throw Error("invalid file");
+            }else if (file.size > 5){
+                throw Error("max size");
+            }
         callback(null, "images")
     },
     //nom du fichier
