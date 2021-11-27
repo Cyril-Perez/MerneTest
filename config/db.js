@@ -1,6 +1,6 @@
 const mongoose =  require("mongoose");
 
-let uri = `mongodb+srv://${process.env.USER_BDD}:${process.env.DB_MDP_BDD}${process.env.DB_SERVER}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+let uri = `mongodb+srv://${process.env.USER_BDD}:${process.env.DB_MDP_BDD}${process.env.DB_SERVER}/${process.env.DB_NAME}`
 mongoose.connect(uri
     ,
    {

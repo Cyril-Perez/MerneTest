@@ -18,9 +18,9 @@ router.patch("/follow/:id", userControllers.follow)
 router.patch("/unfollow/:id", userControllers.unfollow)
 
 //upload 
-router.put("/upload/add/:id",multer,uploadController.uploadProfilAdd)
+router.post("/upload/add/:id",multer,uploadController.uploadProfilAdd)
 router.put("/upload/put/:id",multer,uploadController.uploadProfilPut)
-router.put("/upload/delete/:id",multer,uploadController.uploadProfilDelete)
+router.put("/upload/delete/:id",uploadController.uploadProfilDelete)
 
 
 

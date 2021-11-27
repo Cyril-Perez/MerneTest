@@ -20,6 +20,16 @@ app.use(
         optionSuccessStatus: 204,
     })
 )
+// const corsOptions = {
+//     origin: process.env.CLIENT_URL,
+//     credentials: true,
+//     'allowedHeaders': ['sessionId', 'Content-Type'],
+//     'exposedHeaders': ['sessionId'],
+//     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     'preflightContinue': false
+//   }
+//   app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true })); //analyse de corp (rempalcement body-parser)
 app.use(express.json()); //analyse de corp (rempalcement body-parser)

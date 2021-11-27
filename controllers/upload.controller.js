@@ -1,22 +1,18 @@
 const UserModel = require("../models/user.models")
 const ObjectID = require("mongoose").Types.ObjectId
 const fs = require("fs")
-const {uploadErrors} = require("../manageErr/errors.utils")
+// const { uploadErrors } = require("../manageErr/errors.utils")
+const multer = require("multer")
+const config = require("../middleware/multer-config.middleware")
+// const upload = multer().single("avatar")
 
 module.exports.uploadProfilAdd = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
-        return res.status(400).send("ID unknown : " + req.params.id);                 
+        return res.status(400).send("ID unknown : " + req.params.id);
     try {
-         if (
-            req.file.mimetype != "image/jpg" &&
-            req.file.mimetype != "image/png" &&
-            req.file.mimetype != "image/jpeg"
-            ){
-                throw Error("invalid file");
-            }else if (req.file.size < 500){
-                throw Error("max size");
-            }
-
+        if(req.file === undefined){
+            throw Error("invalid file")
+        }
         const doc = await UserModel.findOneAndUpdate(
             { _id: req.params.id },
             {
@@ -28,8 +24,7 @@ module.exports.uploadProfilAdd = async (req, res) => {
         return res.status(201).json(doc)
 
     } catch (err) {
-        const errors = uploadErrors(err)
-        return res.status(400).json({errors})
+        return res.status(500).json({message : err.message})
     }
 }
 
@@ -38,12 +33,16 @@ module.exports.uploadProfilPut = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID unknown : " + req.params.id);
 
-    try {
+    try {  
+        if(req.file === undefined){
+                    throw Error("invalid file")
+                }     
         //extraction du nom de mon fichier pour une suppression
         const pictureUrl = await UserModel.findOne({ _id: req.params.id })
         const nameUrl = pictureUrl.picture.split('/images/')[1]
         fs.unlink(`images/${nameUrl}`, async () => {
             try {
+                
                 const doc = await UserModel.findOneAndUpdate(
                     { _id: req.params.id },
                     {
@@ -52,14 +51,14 @@ module.exports.uploadProfilPut = async (req, res) => {
                     },
                     { new: true }
                 )
-                return res.status(200).send(doc)
+                return res.status(200).json(doc)
             } catch (err) {
-                return res.status(400).json({ message: err })
+                return res.status(400).json({message : "error save pictures"})
             }
         })
 
     } catch (err) {
-        return res.status(500).json({ message: err })
+        return res.status(500).json({message : err.message})
     }
 }
 module.exports.uploadProfilDelete = async (req, res) => {
