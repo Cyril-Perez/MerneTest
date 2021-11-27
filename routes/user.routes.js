@@ -8,6 +8,8 @@ const multer = require("../middleware/multer-config.middleware")
 router.post("/register", authControllers.signUp )
 router.post("/login" , authControllers.signIn)
 router.get("/logout" , authControllers.logout)
+router.post("/test" , authControllers.test)
+
 
 //user
 router.get("/", userControllers.getAllUsers)

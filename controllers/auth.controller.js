@@ -28,6 +28,7 @@ module.exports = {
 
     signIn : async (req,res)=>{
         const {email , password} = req.body
+        console.log(req.body);
         try{
             const user = await UserModel.findOne({email})
             const verif = verifAuth.compare(password, user.password)
@@ -46,5 +47,9 @@ module.exports = {
     logout : (req , res)=>{
          res.cookie("jwt", "" , {maxAge : 1})
          res.redirect("/")
+    },
+
+    test : (req,res)=>{
+        res.cookie("jwt", "test de cookie", {httpOnly: true , maxAge} )
     }
 }

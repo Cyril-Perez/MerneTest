@@ -21,9 +21,13 @@ function App() {
       console.log(err);
     })
   },[])
-
+  const appContextValue = {
+    uId,
+    setuId
+  }
   return (
-    <AppContext.Provider value={uId}>
+    <AppContext.Provider value={appContextValue}>
+      <Navbar/>
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Home/>}/>

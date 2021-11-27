@@ -1,0 +1,13 @@
+.nav{
+    position: fixed;
+    width: 100px;
+    background-color: rgb(206, 197, 197);
+    box-shadow: 3px 3px 1px black;
+    
+}
+.nav p {
+    font-weight: 700;
+    padding: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}

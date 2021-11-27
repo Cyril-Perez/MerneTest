@@ -9,11 +9,10 @@ const Log = ()=>{
     const context = useContext(AppContext)
     const [check , setCheck] = useState(false)
 
-    
     const handleClickChoice = (e)=>{
-        if (e.target.id === "register-choice") {
+        if (e.target.id === "login-choice") {
             setCheck(true)
-          } else if (e.target.id === "login-choice") {
+          } else if (e.target.id === "register-choice") {
            setCheck(false)
           }
     }

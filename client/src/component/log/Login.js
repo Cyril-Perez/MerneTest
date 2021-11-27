@@ -1,12 +1,60 @@
-const Login = ()=>{
+import { useState } from "react"
+import { useContext } from "react"
+import { AppContext } from "../../AppContext"
+import { useNavigate } from "react-router"
+const Login = (props)=>{
+    const navigate = useNavigate()
+    const context = useContext(AppContext)
+    const [data , setData] = useState()
+    const [dataErr , setDataErr] = useState("")
+
+    const handleSaveData = (e)=>{
+        let infos = {
+            ...data,
+            [e.target.name] : e.target.value
+        }
+        setData(infos)
+        console.log(data);
+    }
+
+    const handleSubmitLogin = async (e)=>{
+        e.preventDefault()
+        await fetch(`${process.env.REACT_APP_API_REQUEST}api/user/login`,
+        {
+            method : "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body : JSON.stringify(data)
+        })
+        .then((res)=>{ 
+           return res.json()
+        })
+        .then((response)=>{
+            if(response.erreur){
+               setDataErr(response.erreur) 
+            } else{
+                window.location = "/"
+            } 
+        }).catch((err)=>{
+            console.log(err.message);
+        })
+        
+    }
+    // useEffect(()=>{
+    //     console.log(test);
+    // },[test])
     return (
-        <form>
+        <form onSubmit={handleSubmitLogin}>
+            <h3>Connectez-vous en renseignant vos informations</h3>
             <label htmlFor="email">Email</label>
-            <input type="text" name="email" className="email-login"/>
+            <input onChange={handleSaveData} type="text" name="email" className="email-login"/>
             <label htmlFor="password">Mot de passe</label>
-            <input type="text" name="password" className="mdp-login"/>
-            <label htmlFor="pseudo">Bio</label>
-            <input type="text" name="pseudo" className="bio-login"/>
+            <input onChange={handleSaveData} type="text" name="password" className="mdp-login"/>
+            <label htmlFor="bio">Bio</label>
+            <input onChange={handleSaveData} type="text" name="bio" className="bio-login"/>
+            {<p>{dataErr}</p>}
             <button>Valider</button>
         </form>
     )

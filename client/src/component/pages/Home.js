@@ -1,7 +1,18 @@
 import Log from "../log/log"
+import { AppContext } from "../../AppContext"
+import { useContext } from "react"
 const Home = ()=>{
-    return (
-        <Log/>
+    const context = useContext(AppContext)
+
+    return ( 
+    <>
+        {
+           
+            context.uId === null ? <Log/> : <p>Bienvenue</p>
+            
+
+        }
+    </>
     )
 }
 

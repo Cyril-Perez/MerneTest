@@ -1,6 +1,13 @@
+import "./log.css"
+
 const Register = ()=>{
+    const handlePostData = async (e)=>{
+        e.preventDefault()
+        await fetch(`${process.env.REACT_APP_API_REQUEST}api/user/test`,{method: "POST"}).then((res)=>{console.log(res);}).catch(()=>{console.log("echouer");})
+    }
     return (
-        <form>
+        <form onSubmit={handlePostData}>
+            <h3>Inscrivez-vous en renseignant vos informations</h3>
             <label htmlFor="pseudo">Pseudo</label>
             <input type="text" name="pseudo" className="pseudo"/>
             <label htmlFor="email">Email</label>

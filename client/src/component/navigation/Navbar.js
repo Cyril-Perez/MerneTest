@@ -1,8 +1,12 @@
+import "./navbar.css"
+
 const Navbar = ()=>{
     return (
-        <div>
-            Navbar
-        </div>
+        <nav className="nav">         
+                <p>Accueil</p>
+                <p>Profil</p>
+                <p>✖️</p>
+        </nav>
     )
 }
 

@@ -15,7 +15,7 @@ const authMidlewares = require("./middleware/auth.middleware")
 app.use(helmet());
 app.use(
     cors({
-        origin: "*",
+        origin: "http://localhost:3000",
         credentials: true,
         optionSuccessStatus: 204,
     })
