@@ -14,9 +14,11 @@ function App() {
   const [uId , setuId] = useState(null)
 
   useEffect(async()=>{
-    await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET"}).then((res)=>{
-      console.log(res);
-      setuId(res)
+    await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
+      return res.json()
+    }).then((response)=>{ 
+      console.log(response);
+      setuId(response.user)
     }).catch((err)=>{
       console.log(err);
     })

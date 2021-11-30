@@ -13,27 +13,27 @@ const authMidlewares = require("./middleware/auth.middleware")
 
 //middlewares
 app.use(helmet());
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-        credentials: true,
-        optionSuccessStatus: 204,
-    })
-)
-// const corsOptions = {
-//     origin: process.env.CLIENT_URL,
-//     credentials: true,
-//     'allowedHeaders': ['sessionId', 'Content-Type'],
-//     'exposedHeaders': ['sessionId'],
-//     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     'preflightContinue': false
-//   }
-//   app.use(cors(corsOptions));
+// app.use(
+//     cors({
+//         origin: "http://localhost:3000",
+//         credentials: true,
+//         optionSuccessStatus: 204,
+//     })
+// )
+const corsOptions = {
+    origin: "http://localhost:3000",
+    credentials: true,
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }
+  app.use(cors(corsOptions));
 
-app.use(cookieParser());
+
 app.use(express.urlencoded({ extended: true })); //analyse de corp (rempalcement body-parser)
 app.use(express.json()); //analyse de corp (rempalcement body-parser)
-
+app.use(cookieParser());
 
 //check jwt connexion
 app.get("*", authMidlewares.checkUser)

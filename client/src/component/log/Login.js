@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { useContext } from "react"
 import { AppContext } from "../../AppContext"
-import { useNavigate } from "react-router"
-const Login = (props)=>{
-    const navigate = useNavigate()
+
+
+const Login = ()=>{
+
     const context = useContext(AppContext)
     const [data , setData] = useState()
     const [dataErr , setDataErr] = useState("")
@@ -22,6 +23,7 @@ const Login = (props)=>{
         await fetch(`${process.env.REACT_APP_API_REQUEST}api/user/login`,
         {
             method : "POST",
+            credentials : "include",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -35,12 +37,12 @@ const Login = (props)=>{
             if(response.erreur){
                setDataErr(response.erreur) 
             } else{
+                context.setuId(response.user)
                 window.location = "/"
             } 
         }).catch((err)=>{
             console.log(err.message);
-        })
-        
+        })      
     }
     // useEffect(()=>{
     //     console.log(test);

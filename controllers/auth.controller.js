@@ -28,16 +28,15 @@ module.exports = {
 
     signIn : async (req,res)=>{
         const {email , password} = req.body
-        console.log(req.body);
         try{
             const user = await UserModel.findOne({email})
-            const verif = verifAuth.compare(password, user.password)
+            const verif = await verifAuth.compare(password, user.password)
             if(!verif){
                 return res.status(400).json({message : "authentification incorrect"})
             }           
             const token = createToken(user._id)
             res.cookie("jwt", token , {httpOnly : true ,  maxAge })
-            res.status(201).json({user: user.id})
+            res.status(201).json({user: user._id})
         } catch (err) {
             const errors = signInErrors(err)
             res.status(500).send(errors)
