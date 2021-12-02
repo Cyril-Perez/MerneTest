@@ -30,12 +30,10 @@ function App() {
   return (
     <AppContext.Provider value={appContextValue}>
       <Navbar/>
-      <BrowserRouter>
           <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/profil/:id" element={<Profil/>}/>
           </Routes>
-      </BrowserRouter>
     </AppContext.Provider>
   );
 }
