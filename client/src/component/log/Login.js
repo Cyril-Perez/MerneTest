@@ -1,13 +1,19 @@
 import { useState } from "react"
 import { useContext } from "react"
 import { AppContext } from "../../AppContext"
-
+import {useSelector , useDispatch} from "react-redux"
 
 const Login = ()=>{
 
     const context = useContext(AppContext)
     const [data , setData] = useState()
     const [dataErr , setDataErr] = useState("")
+
+    
+    const donnees = useSelector(state => state.fetchReducer)
+    const dispatch = useDispatch()
+    console.log(donnees)
+
 
     const handleSaveData = (e)=>{
         let infos = {
@@ -33,12 +39,13 @@ const Login = ()=>{
         .then((res)=>{ 
            return res.json()
         })
-        .then((response)=>{
+        .then(async (response)=>{
             if(response.erreur){
                setDataErr(response.erreur) 
             } else{
                 context.setuId(response.user)
-                window.location = "/"
+                dispatch({type : "findUser" , payload : response.user})
+                 window.location = "/"      
             } 
         }).catch((err)=>{
             console.log(err.message);

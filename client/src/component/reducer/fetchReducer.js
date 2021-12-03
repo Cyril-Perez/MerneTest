@@ -6,11 +6,24 @@ const initalState = {
 
 export default function fetchReducer(state= initalState, action ) {
     switch (action.type) {
-        case "value":
+        case "findUser" :
+            const id = toString(action.payload)
+            let tampon;
+            fetch(`${process.env.REACT_APP_API_REQUEST}/api/user/${id}`, {
+                                    method: "GET"
+                                }).then((res)=>{
+                                   tampon = res
+                                }).catch((err)=>{
+                                    tampon = err
+                                })
+            return {
+                ...tampon
+            }
+            
             
             break;
     
-        default:
-            break;
+        default: return state
+           
     }
 }
