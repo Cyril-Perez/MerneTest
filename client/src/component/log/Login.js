@@ -39,7 +39,7 @@ const Login = ()=>{
         .then((res)=>{ 
            return res.json()
         })
-        .then(async (response)=>{
+        .then((response)=>{
             if(response.erreur){
                setDataErr(response.erreur) 
             } else{

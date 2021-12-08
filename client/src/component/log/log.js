@@ -7,6 +7,7 @@ import "./log.css"
 const Log = ()=>{
 
     const context = useContext(AppContext)
+
     const [check , setCheck] = useState(false)
 
     const handleClickChoice = (e)=>{

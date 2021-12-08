@@ -45,3 +45,11 @@ form p {
 .login-choice{
     letter-spacing: 1px;
 }
+
+/*register p erreur gestion*/
+#after-submit {
+    color: rgb(20, 85, 20);
+}
+#before-submit{
+    color: black;
+}
