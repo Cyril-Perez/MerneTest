@@ -18,7 +18,7 @@ function App() {
       return res.json()
     }).then((response)=>{ 
       console.log(response);
-      setuId(response.user)
+      setuId(response)
     }).catch((err)=>{
       console.log(err);
     })

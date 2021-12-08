@@ -45,10 +45,11 @@ const Login = ()=>{
             } else{
                 context.setuId(response.user)
                 dispatch({type : "findUser" , payload : response.user})
-                 window.location = "/"      
+                
+                //  window.location = "/"      
             } 
         }).catch((err)=>{
-            console.log(err.message);
+            console.log(err);
         })      
     }
     // useEffect(()=>{
@@ -61,8 +62,6 @@ const Login = ()=>{
             <input onChange={handleSaveData} type="text" name="email" className="email-login"/>
             <label htmlFor="password">Mot de passe</label>
             <input onChange={handleSaveData} type="text" name="password" className="mdp-login"/>
-            <label htmlFor="bio">Bio</label>
-            <input onChange={handleSaveData} type="text" name="bio" className="bio-login"/>
             {<p>{dataErr}</p>}
             <button>Valider</button>
         </form>
