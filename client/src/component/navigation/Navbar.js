@@ -30,9 +30,9 @@ const Navbar = ()=>{
     
     return (
         <nav className="nav">         
-                <p>Accueil</p>
+                <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
-                <p onClick={handleDisconnect} style={{cursor : "pointer"}}>✖️</p>
+                { context.uId ? <p onClick={handleDisconnect} style={{cursor : "pointer"}}>✖️</p> : <Link style={{textDecoration: "none" , color : "black" , fontSize: "0.8rem"}} to="/"><p>Connexion</p></Link>}
         </nav>
     )
 }

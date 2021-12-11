@@ -3,6 +3,7 @@ import { useContext } from "react"
 import { AppContext } from "../../AppContext"
 import {useSelector , useDispatch} from "react-redux"
 
+
 const Login = ()=>{
 
     const context = useContext(AppContext)
@@ -21,7 +22,6 @@ const Login = ()=>{
             [e.target.name] : e.target.value
         }
         setData(infos)
-        console.log(data);
     }
 
     const handleSubmitLogin = async (e)=>{
@@ -42,11 +42,9 @@ const Login = ()=>{
         .then((response)=>{
             if(response.erreur){
                setDataErr(response.erreur) 
-            } else{
-                context.setuId(response.user)
-                dispatch({type : "findUser" , payload : response.user})
-                
-                //  window.location = "/"      
+            } else{               
+                context.setuId(response.user)               
+                 window.location = "/"      
             } 
         }).catch((err)=>{
             console.log(err);

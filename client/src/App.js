@@ -1,5 +1,4 @@
 import {
-  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -9,20 +8,24 @@ import Navbar from "./component/navigation/Navbar";
 import Profil from "./component/pages/Profil";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getUser } from "./component/action/action.users";
 
 function App() {
   const [uId , setuId] = useState(null)
+  const dispatch = useDispatch()
 
   useEffect(async()=>{
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
-      console.log(response);
-      setuId(response)
+        setuId(response)
+        dispatch(getUser(response)) 
     }).catch((err)=>{
       console.log(err);
     })
-  },[])
+    
+  },[uId])
   const appContextValue = {
     uId,
     setuId

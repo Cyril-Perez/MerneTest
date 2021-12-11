@@ -1,3 +1,5 @@
+import { GET_USER } from "../action/action.users";
+
 const initalState = {
     _id : "",
     email : "",
@@ -6,19 +8,8 @@ const initalState = {
 
 export default function fetchReducer(state= initalState, action ) {
     switch (action.type) {
-        case "findUser" :
-            const id = toString(action.payload)
-            let tampon;
-            fetch(`${process.env.REACT_APP_API_REQUEST}/api/user/${id}`, {
-                                    method: "GET"
-                                }).then((res)=>{
-                                   tampon = res
-                                }).catch((err)=>{
-                                    tampon = err
-                                })
-            return {
-                ...tampon
-            }
+        case GET_USER:
+      return action.payload;
             
             
             break;
