@@ -17,7 +17,7 @@ module.exports.uploadProfilAdd = async (req, res) => {
             { _id: req.params.id },
             {
                 //pour avoir une url pour mon front (src)
-                $set: { picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` }
+                $set: { picture: `${process.env.URL_WEB}/images/${req.file.filename}` }
             },
             { new: true }
         )
@@ -40,14 +40,14 @@ module.exports.uploadProfilPut = async (req, res) => {
         //extraction du nom de mon fichier pour une suppression
         const pictureUrl = await UserModel.findOne({ _id: req.params.id })
         const nameUrl = pictureUrl.picture.split('/images/')[1]
-        fs.unlink(`images/${nameUrl}`, async () => {
+        fs.unlink(`client/public/images/${nameUrl}`, async () => {
             try {
                 
                 const doc = await UserModel.findOneAndUpdate(
                     { _id: req.params.id },
                     {
                         //pour avoir une url pour mon front (src)
-                        $set: { picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` }
+                        $set: { picture: `${process.env.URL_WEB}/images/${req.file.filename}` }
                     },
                     { new: true }
                 )
@@ -74,7 +74,7 @@ module.exports.uploadProfilDelete = async (req, res) => {
                     { _id: req.params.id },
                     {
                         //pour avoir une url pour mon front (src)
-                        $set: { picture: "../images/randomUser.png" }
+                        $set: { picture: `${process.env.URL_WEB}/images/randomUser.png` }
                     },
                     { new: true }
                 )

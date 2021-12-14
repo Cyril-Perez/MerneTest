@@ -3,6 +3,8 @@
     width: 100px;
     background-color: rgb(206, 197, 197);
     box-shadow: 3px 3px 1px black;
+    top: 0px;
+    left: 0px;
     
 }
 .nav p {

@@ -49,7 +49,7 @@ app.get("/jwtid", authMidlewares.requireAuth , (req,res)=>{
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //rendu de dossier static , dirname chemin actuel + dossier image
-app.use("/images" ,express.static(path.join(__dirname, "images")));
+app.use("/public" ,express.static(path.join(__dirname, "images")));
 
 
 
