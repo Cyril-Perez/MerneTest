@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICS = "UPLOAD_PICS"
@@ -20,35 +20,57 @@ export const getUser = (uid) => {
 };
 
 export const uploadPics = (data, id) => {
-  console.log(data);
-  return (dispatch) => {
-    return fetch(`${process.env.REACT_APP_API_REQUEST}api/user/upload/add/${id}`, {
-        method: "POST",
-        headers : {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body : JSON.stringify(data) 
-    }).then((res)=> {
-       return res.json()
-     }).then((response)=> dispatch({ type: UPLOAD_PICS, payload: response }))
-      .catch((err) => console.log(err));
-  };
+  return (dispatch)=>{
+    // console.log(data);
+    // return (dispatch) => {
+    //   return fetch(`${process.env.REACT_APP_API_REQUEST}api/user/upload/put/${id}`, {
+    //       method: "PUT",
+    //       headers : {
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json'
+    //       },
+    //       body : data 
+    //   }).then((res)=> {
+    //      return res.json()
+    //    }).then((response)=> dispatch({ type: UPLOAD_PICS, payload: response }))
+    //     .catch((err) => console.log(err));
+    // };
+    return axios
+    .post(`${process.env.REACT_APP_API_REQUEST}api/user/upload/add/${id}`, data)
+    .then((res) => {
+      if(res.data.errors){
+        console.log("erreur");
+      }else {
+        dispatch({ type: UPLOADSET_PICS, payload: res.data });
+      }   
+    }).catch((err)=>{console.log(err);})
+  }
 };
 
 export const uploadSetPics = (data, id) => {
-  console.log(data);
-  return (dispatch) => {
-    return fetch(`${process.env.REACT_APP_API_REQUEST}api/user/upload/put/${id}`, {
-        method: "PUT",
-        headers : {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body : JSON.stringify(data) 
-    }).then((res)=> {
-       return res.json()
-     }).then((response)=> dispatch({ type: UPLOAD_PICS, payload: response }))
-      .catch((err) => console.log(err));
-  };
+  return (dispatch)=>{
+  // console.log(data);
+  // return (dispatch) => {
+  //   return fetch(`${process.env.REACT_APP_API_REQUEST}api/user/upload/put/${id}`, {
+  //       method: "PUT",
+  //       headers : {
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json'
+  //       },
+  //       body : data 
+  //   }).then((res)=> {
+  //      return res.json()
+  //    }).then((response)=> dispatch({ type: UPLOAD_PICS, payload: response }))
+  //     .catch((err) => console.log(err));
+  // };
+  return axios
+  .put(`${process.env.REACT_APP_API_REQUEST}api/user/upload/put/${id}`, data)
+  .then((res) => {
+    if(res.data.errors){
+      console.log("erreur");
+    }else {
+      dispatch({ type: UPLOADSET_PICS, payload: res.data });
+    }   
+  }).catch((err)=>{console.log(err);})
+}
 };

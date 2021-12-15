@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useContext } from "react"
 import { AppContext } from "../../AppContext"
 import {useSelector , useDispatch} from "react-redux"
-
+import { getUser } from "../action/action.users"
 
 const Login = ()=>{
 
@@ -43,8 +43,8 @@ const Login = ()=>{
             if(response.erreur){
                setDataErr(response.erreur) 
             } else{               
-                context.setuId(response.user)               
-                 window.location = "/"      
+                context.setuId(response.user)
+                dispatch(getUser(response.user))                   
             } 
         }).catch((err)=>{
             console.log(err);

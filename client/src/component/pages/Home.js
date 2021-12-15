@@ -10,8 +10,7 @@ const Home = ()=>{
     <>
         {
            
-            context.uId === null ? <Log/> : <h1 style={{textAlign : "center"}}>Bienvenue</h1>
-            
+            context.uId  ? <h1 style={{textAlign : "center"}}>Bienvenue</h1> : <Log/>             
 
         }
     </>

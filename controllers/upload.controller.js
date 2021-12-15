@@ -20,7 +20,7 @@ module.exports.uploadProfilAdd = async (req, res) => {
                 $set: { picture: `${process.env.URL_WEB}/images/${req.file.filename}` }
             },
             { new: true }
-        )
+        ).select("-password")
         return res.status(201).json(doc)
 
     } catch (err) {
@@ -50,7 +50,7 @@ module.exports.uploadProfilPut = async (req, res) => {
                         $set: { picture: `${process.env.URL_WEB}/images/${req.file.filename}` }
                     },
                     { new: true }
-                )
+                ).select("-password")
                 return res.status(200).json(doc)
             } catch (err) {
                 return res.status(400).json({message : "error save pictures"})
@@ -77,7 +77,7 @@ module.exports.uploadProfilDelete = async (req, res) => {
                         $set: { picture: `${process.env.URL_WEB}/images/randomUser.png` }
                     },
                     { new: true }
-                )
+                ).select("-password")
                 return res.status(200).send(doc)
             } catch (err) {
                 return res.status(400).json({ message: err })

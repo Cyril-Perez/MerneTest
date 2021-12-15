@@ -12,10 +12,10 @@ export default function fetchReducer(state= initalState, action ) {
         return action.payload;
         break
         case UPLOAD_PICS :
-            return action.payload
+            return action.payload 
         break     
         case  UPLOADSET_PICS :
-            return action.payload
+            return action.payload 
     
         default: return state
            
