@@ -7,13 +7,13 @@ const Home = ()=>{
     const donnees = useSelector(state => state.fetchReducer)
     console.log(donnees);
     return ( 
-    <>
-        {
+        <header>
+            {
            
             context.uId  ? <h1 style={{textAlign : "center"}}>Bienvenue</h1> : <Log/>             
 
-        }
-    </>
+            }
+        </header>
     )
 }
 

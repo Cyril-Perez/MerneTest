@@ -1,13 +1,15 @@
 
-/*Profil.js*/
-
+/*Profil.js  UPLOAD IMAGE*/
+header{
+    font-family: sans-serif;
+}
 .content-profil{
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 400px;
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px  auto;
     color: black;
     background-color: rgb(206, 197, 197);
@@ -45,6 +47,7 @@
     border-radius: 25px;
     margin: 5px auto;
     color: whitesmoke;
+    cursor: pointer;
 }
 .content-profil button {
     margin: 10px auto;
@@ -53,6 +56,7 @@
     border: 3px solid black;
     font-weight: bold;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 .content-profil button:hover {
         background-color: black;
@@ -62,3 +66,57 @@
 #error-file{
     color: black;
 }
+
+/*profil.js BIO*/
+
+.content-bio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    max-width: 900px;
+    margin: 50px  auto;
+    color: black;
+    background-color: rgb(206, 197, 197);
+    box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    transition: 0.4s ease-in-out;
+    padding: 20px;
+}
+.content-bio:hover{
+    box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 0px  5px rgba(0,0,0,1)
+}
+.content-bio textarea {
+    padding: 10px;
+    margin: 10px auto;
+    width: 300px;
+    height: 100px;
+    border-radius: 3px ;
+    font-weight: 700;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+    resize: none;
+    
+}
+.content-bio textarea:focus{
+    border: 3px solid black;
+}
+.content-bio button.send-button-bio {
+    
+    background-color: black;
+    width: 280px;
+    padding: 17px;
+    border-radius: 25px;
+    margin: 5px auto;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px;
+    border: hidden;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0px;
+}
+

@@ -17,7 +17,7 @@ module.exports = {
   updateUser: async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
       return res.status(400).send("ID unknown : " + req.params.id);
-
+    console.log(req.body);
     try {
       const update = await UserModel.findOneAndUpdate(
         { _id: req.params.id },

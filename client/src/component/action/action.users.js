@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 export const UPLOAD_PICS = "UPLOAD_PICS"
 export const UPLOADSET_PICS = "UPLOADSET_PICS"
+export const SET_BIO = "SET_BIO"
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -74,3 +75,18 @@ export const uploadSetPics = (data, id) => {
   }).catch((err)=>{console.log(err);})
 }
 };
+
+export const majBio = (data , id)=>{
+  return (dispatch)=>{
+    return axios
+    .put(`${process.env.REACT_APP_API_REQUEST}api/user/${id}`, { bio : data} )
+    .then((res)=>{
+      if(res.data.errors){
+        console.log("erreur");
+      } else{
+        dispatch({type : SET_BIO , payload : res.data.bio})
+      }
+    })
+    .catch((err)=>{   console.log(err) })
+  }
+}
