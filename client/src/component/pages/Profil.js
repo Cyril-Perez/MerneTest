@@ -10,6 +10,8 @@ const Profil = ()=>{
     const state = useSelector(state => state.fetchReducer)
     //upload Image
     const [file , setFile] = useState()
+    const [sendfile , setSendFile] = useState("")
+
     const dispatch = useDispatch()
     //set Bio
     const [bio, setBio] = useState()
@@ -20,7 +22,8 @@ const Profil = ()=>{
     //function submit Upload Image
     const handleChangePics = (e)=>{
         e.preventDefault()
-        const data = new FormData();
+        if(file){
+          const data = new FormData();
         // let fileField = document.querySelector("input[type='file']");
         // console.log(fileField.files[0]);
         data.append("name", state.pseudo)
@@ -34,7 +37,11 @@ const Profil = ()=>{
             dispatch(uploadPics(data, state._id))
         } else {
             dispatch(uploadSetPics(data, state._id))
-        }    
+        }  
+        } else {
+            setSendFile(" : aucun fichier")
+        }
+            
     }
     //function save input Upload File
     const handleSaveFile = (e)=>{
@@ -42,7 +49,6 @@ const Profil = ()=>{
     }
 
     //function save textearea Data
-    let validBio = document.querySelector("valid-bio")
     const handleSaveDataBio = (e)=>{
         setSendBio("")
         setVerifyBio(true)
@@ -68,7 +74,7 @@ const Profil = ()=>{
                     <form action="" onSubmit={handleChangePics}>
                         <label htmlFor="file" className="change-pics">Changer l'image</label>
                         <input onChange={handleSaveFile} type="file" id="file" name="file" accept=".jpg , .jpeg , .png"/>
-                        <p id="error-file">{file ? file.name : "Selectionner un fichier"}</p>
+                        <p id="error-file">{file ? file.name : "Selectionner un fichier"+sendfile }</p>
                         <button>Valider</button>
                     </form>
                 </div> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><h1>Veuillez-vous connectez</h1></Link>
