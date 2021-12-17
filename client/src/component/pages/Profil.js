@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import {Link} from "react-router-dom"
 import { uploadPics, uploadSetPics, majBio } from "../action/action.users"
+import { configDate } from "../tips/function.utils"
 import "./Pages.css"
 const Profil = ()=>{
     const params = useParams()
@@ -12,6 +13,7 @@ const Profil = ()=>{
     const dispatch = useDispatch()
     //set Bio
     const [bio, setBio] = useState()
+    const [sendBio , setSendBio] = useState()
     const [verifiyBio, setVerifyBio] = useState(false)
 
     
@@ -40,13 +42,18 @@ const Profil = ()=>{
     }
 
     //function save textearea Data
+    let validBio = document.querySelector("valid-bio")
     const handleSaveDataBio = (e)=>{
+        setSendBio("")
         setVerifyBio(true)
         setBio(e.target.value)
     }
+    //function onChange textarea bio
     const handleClickSetBio = ()=>{
+        setSendBio("Bio modifiée")
         dispatch(majBio(bio, state._id))
         setVerifyBio(false)
+
     }
 
     return (
@@ -56,6 +63,7 @@ const Profil = ()=>{
                 params.id ? 
                 <div className="content-profil"> 
                     <h1>Votre Profil : {state.pseudo}</h1>
+                    <p className="date-config">{`Crée le : ${configDate(state.createdAt)}`}</p>
                     <img src={state.picture} alt="picture-profil"/>
                     <form action="" onSubmit={handleChangePics}>
                         <label htmlFor="file" className="change-pics">Changer l'image</label>
@@ -68,7 +76,8 @@ const Profil = ()=>{
             <section>
                 <div className="content-bio">
                     <h2>Bio</h2>
-                    <textarea onChange={handleSaveDataBio} type="text" defaultValue={state.bio}></textarea>
+                    <textarea  id={verifiyBio ? "textarea-bio" : "" } onChange={handleSaveDataBio} spellcheck="false" type="text" maxLength="400" defaultValue={state.bio}></textarea>
+                    <p className="valid-bio">{sendBio}</p>
                     {verifiyBio ? <button onClick={handleClickSetBio} className="send-button-bio">Valider les changements</button> 
                     : <button  onClick={()=>{  setVerifyBio(true)}} className="send-button-bio">Modifier la bio</button>}
                 </div>
