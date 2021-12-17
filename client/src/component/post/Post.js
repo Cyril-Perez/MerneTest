@@ -1,6 +1,7 @@
 const AllPost = ()=>{
     return (
-        <div>
+        <div >
+            
             
         </div>
     )
