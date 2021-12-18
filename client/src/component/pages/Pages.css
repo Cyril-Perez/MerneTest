@@ -70,6 +70,22 @@ header{
 #error-file{
     color: black;
 }
+/*profil.js abonnement*/
+.content-abonnement {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+.content-abonnement p {
+    font-weight: 700;
+
+}
+.content-abonnement ul {
+    list-style: none;
+    width: 150px;
+    background-color: white;
+}
 
 /*profil.js BIO*/
 

@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom"
-import {Provider} from "react-redux"
+import {Provider,} from "react-redux"
 import store from "./store"
-
+import { getAllUsers } from './component/action/action.users';
+store.dispatch(getAllUsers())
 ReactDOM.render(
-  
   <Provider store ={store}>
     <Router>
         <App /> 

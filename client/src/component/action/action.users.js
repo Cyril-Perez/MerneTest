@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_USER = "GET_USER";
+export const GET_ALLUSERS = "GET_ALLUSERS";
 export const UPLOAD_PICS = "UPLOAD_PICS"
 export const UPLOADSET_PICS = "UPLOADSET_PICS"
 export const SET_BIO = "SET_BIO"
@@ -88,5 +89,16 @@ export const majBio = (data , id)=>{
       }
     })
     .catch((err)=>{   console.log(err) })
+  }
+}
+
+export const getAllUsers = ()=>{
+  return (dispatch)=>{
+      return axios
+      .get(`${process.env.REACT_APP_API_REQUEST}api/user`)
+      .then((res)=>{
+        dispatch({ type : GET_ALLUSERS , payload : res.data})
+      })
+      .catch((err)=> console.log(err))
   }
 }

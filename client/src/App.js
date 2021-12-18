@@ -9,18 +9,19 @@ import Profil from "./component/pages/Profil";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUser } from "./component/action/action.users";
+import { getAllUsers, getUser } from "./component/action/action.users";
 
 function App() {
   const [uId , setuId] = useState(null)
   const dispatch = useDispatch()
-
+  
   useEffect(async()=>{
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
         setuId(response)
         dispatch(getUser(response)) 
+        // dispatch(getAllUsers())
     }).catch((err)=>{
       console.log(err);
     })

@@ -58,7 +58,7 @@ module.exports = {
           $addToSet: { following: req.body.idToFollow }
         },
         { new: true, upsert: true }
-      )
+      ).select("-password")
       // action sur l'utilisateur qui a été follow
       await UserModel.findOneAndUpdate(
         { _id: req.body.idToFollow },
