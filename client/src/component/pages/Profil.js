@@ -9,7 +9,14 @@ const Profil = () => {
     const params = useParams()
     const state = useSelector(state => state.fetchReducer)
     const allUsers = useSelector(users => users.AllUsers)
+    const [filterState, setFilterState] = useState()
+    // const [filterState, setFilterState] = useState([{_id : "test", picture : "./test" , pseudo : "idee"}])
+    // const [validFilter , setValidFilter] = useState(false)
+    // if(filterState){
+    //     setValidFilter(true)
+    // }
     useEffect(()=>{
+        setFilterState(allUsers)
         console.log(allUsers);
     },[allUsers])
     
@@ -83,17 +90,18 @@ const Profil = () => {
                            <div>
                                <p>Abonnés : {state.followers ? state.followers.length : ""}</p>
                                 <ul>
-                                    { allUsers.map((item)=>{ state.followers.forEach((element)=>{
-                                                if(item._id === element){
+                                    { allUsers && state.followers ?  allUsers.map((item)=>{ 
+                                                for(let i=0 ; state.followers.length ; i++){
+                                                    if(item._id === state.followers[i]){
                                                     return (
-                                                        <li key={item._id}>
-                                                            <img src={item.picture} alt="profil-pics"/>
+                                                    <li key={item._id}>
+                                                            <img style={{height : "30px" , width : "30px"}} src={item.picture} alt="profil-pics"/>
                                                             <span>{item.pseudo}</span>
-                                                        </li>
-                                                    )
+                                                        </li>)
                                                 }
-                                            })
+                                                }
                                         })
+                                        : ""
                                     }
                                 </ul>
                            </div>
