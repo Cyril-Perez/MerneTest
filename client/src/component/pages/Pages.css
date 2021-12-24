@@ -2,6 +2,7 @@
 /*Profil.js  UPLOAD IMAGE*/
 header{
     font-family: sans-serif;
+    
 }
 .date-config{
     font-weight: 700;
@@ -31,7 +32,7 @@ header{
 .content-profil h1 {
     margin: 18px;
 }
-.content-profil img {
+.content-profil .picture-profil-edit {
     height: 300px;
     width: 300px;
     border-radius: 150px;
@@ -70,7 +71,9 @@ header{
 #error-file{
     color: black;
 }
-/*profil.js abonnement*/
+
+
+/*profil.js abonnement voir les abonnements*/
 .content-abonnement {
     display: flex;
     flex-direction: row;
@@ -81,11 +84,69 @@ header{
     font-weight: 700;
 
 }
-.content-abonnement ul {
-    list-style: none;
-    width: 150px;
-    background-color: white;
+.img-follows{
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
+
+/*followers*/
+.content-views-followers{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    width: 200px;
+}
+.content-views-followers p {
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+}
+.content-views-followers ul {
+    list-style: none;
+}
+.content-views-followers li{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+.content-views-followers span{
+    padding-left:  20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/*following*/
+.content-views-followings{
+    position: absolute;
+    top: 50px;
+    right: 200px;
+    width: 200px;
+}
+.content-views-followings p {
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+}
+.content-views-followings ul {
+    list-style: none;
+}
+.content-views-followings li{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+.content-views-followings span{
+    padding-left:  20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+    
+
 
 /*profil.js BIO*/
 
