@@ -212,3 +212,8 @@ header{
     letter-spacing: 1px;
 }
 
+/*POST Home.js */
+.container-post{
+    width:  100% ;
+    margin: 20px auto;
+}

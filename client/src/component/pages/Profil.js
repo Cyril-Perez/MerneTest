@@ -9,6 +9,7 @@ const Profil = () => {
     const params = useParams()
     const state = useSelector(state => state.fetchReducer)
     const allUsers = useSelector(users => users.AllUsers)
+
     const [verifFollow, setVerifFollow] = useState(null)
     // const [filterState, setFilterState] = useState([{_id : "test", picture : "./test" , pseudo : "idee"}])
     // const [validFilter , setValidFilter] = useState(false)

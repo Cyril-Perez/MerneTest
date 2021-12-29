@@ -12,7 +12,7 @@ export const getPost = ()=>{
         } else{
             console.log(responsePost);
             
-        //   dispatch({type : GET_POST , payload : [res.data]})
+         dispatch({type : GET_POST , payload : responsePost.data})
         }
       })
       .catch((err)=>{   console.log(err) })

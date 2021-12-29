@@ -3,9 +3,11 @@ import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension";
 import fetchReducer from "./component/reducer/fetchReducer"
 import AllUsers from "./component/reducer/allUsers.reducer";
+import postReducer from "./component/reducer/post.reducer";
 const allReducers = combineReducers({
     fetchReducer,
     AllUsers,
+    postReducer,
 }) 
 
 const store = createStore(

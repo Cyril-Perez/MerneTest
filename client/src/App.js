@@ -10,18 +10,22 @@ import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllUsers, getUser } from "./component/action/action.users";
+import { getPost } from "./component/action/action.post";
+
 
 function App() {
   const [uId , setuId] = useState(null)
   const dispatch = useDispatch()
   
   useEffect(async()=>{
+    dispatch(getAllUsers())
+    dispatch(getPost())
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
         setuId(response)
         dispatch(getUser(response)) 
-        // dispatch(getAllUsers())
+         
     }).catch((err)=>{
       console.log(err);
     })

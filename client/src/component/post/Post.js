@@ -1,8 +1,10 @@
-const AllPost = ()=>{
+import "./post.css"
+
+const AllPost = (props)=>{
     return (
-        <div >
-            
-            
+        <div className="one-post">
+            <p>{props.posterID}</p>
+            <p>{props.message}</p>        
         </div>
     )
 }
