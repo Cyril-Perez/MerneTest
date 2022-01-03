@@ -87,7 +87,7 @@ const Profil = () => {
         <>
             <header className="profil-header">
                 {
-                    params.id === "null" ? <Link style={{ textDecoration: "none", color: "black" }} to="/"><h1>Veuillez-vous connectez</h1></Link>
+                    params.id === "null" ? <Link style={{ textDecoration: "none", color: "black" }} to="/"><h1 style={{textAlign : "center"}}>Veuillez-vous connectez</h1></Link>
                         :
                         <>
                             <div className="content-profil">
@@ -110,8 +110,8 @@ const Profil = () => {
                                     <button>Valider</button>
                                 </form>
                             </div>
-                        </>
-                }
+                       
+               
                 <div className="content-views-followers">
                     <p id="followers-views" onClick={handleClickFollow}>Mes abonnés{ verifFollow === null || verifFollow === true ? <span  onClick={()=>{setVerifFollow(false)}}>&#11015;</span> : <span onClick={()=>{setVerifFollow(null)}}>&#11014;</span>}</p>
                     {
@@ -154,9 +154,13 @@ const Profil = () => {
                     </ul>
                     }
                 </div>
-
+                </>
+                }
             </header>
-            <section>
+            <>
+            {
+                params.id === "null" ? "" : 
+                <section>
                 <div className="content-bio">
                     <h2>Bio</h2>
                     <textarea id={verifiyBio ? "textarea-bio" : ""} onChange={handleSaveDataBio} spellcheck="false" type="text" maxLength="400" defaultValue={state.bio}></textarea>
@@ -165,6 +169,9 @@ const Profil = () => {
                         : <button onClick={() => { setVerifyBio(true) }} className="send-button-bio">Modifier la bio</button>}
                 </div>
             </section>
+            }
+            
+            </>
         </>
     )
 }
