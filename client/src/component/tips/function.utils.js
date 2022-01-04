@@ -15,3 +15,12 @@ export const configDate = (nbr) => {
     // console.log(date);
     return date.toString();
   };
+
+  export const loading = (value) => {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value === "object" && Object.keys(value).length === 0) ||
+      (typeof value === "string" && value.trim().length === 0)
+    );
+  };
