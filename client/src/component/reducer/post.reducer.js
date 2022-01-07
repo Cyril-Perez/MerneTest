@@ -1,11 +1,6 @@
 import { GET_POST } from "../action/action.post";
 
-const initialState = [
-    {
-        _id: "",
-        pseudo: "",
-    }
-]
+const initialState = []
 
 
 

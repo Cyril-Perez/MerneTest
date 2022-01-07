@@ -6,7 +6,7 @@ const ObjectID = require("mongoose").Types.ObjectId
 module.exports.readPost = (req, res) => { 
   PostModel.find((err, docs) => {
     if (!err){
-       return res.send(docs)
+       return res.send(docs.reverse())
     }     
     else console.log("Récuperation des données échouées " + err);
   }).sort({ createdAte: -1 })

@@ -12,26 +12,59 @@ const Home = ()=>{
     const allUsers = useSelector(users => users.AllUsers)
     const allPost = useSelector(state => state.postReducer)
     const [nbrPost , setNbrPost] = useState(3)
+    const [load, setLoad] = useState(true)
     const dispatch = useDispatch()
 
-    const scrollPost = ()=>{
-        if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
-                if(nbrPost > allPost.length +1 ){
-                    console.log(allPost);
-                    let numero = allPost.length+1
-                    console.log(nbrPost , allPost.length);
-                }else {
-                    setNbrPost(nbrPost+3)
-                }
-          }
-    }
+    // const scrollPost = ()=>{
+    //     let num = [...allPost]
+    //     if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
+    //             if(nbrPost > num.length  ){
+    //                 console.log(allPost);
+    //                 let numero = allPost.length+1
+    //                 console.log(nbrPost , allPost.length);
+    //             }else {
+    //                 setNbrPost(nbrPost+3)
+    //             }
+    //       }
+    // }
 
-    useEffect(()=>{
-        dispatch(getPost(nbrPost))
-        console.log(allPost.length);
-        window.addEventListener("scroll", scrollPost)
-        return ()=> window.removeEventListener("scroll", ()=>{ })
-    },[ nbrPost ])
+    useEffect(()=>{  
+        if(load){
+            dispatch(getPost(nbrPost))
+            setLoad(false)
+            setNbrPost(nbrPost + 3)
+        }
+
+
+        window.addEventListener("scroll", ()=>{
+            if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
+                setLoad(true)                                                                      
+        }
+        })
+            // if(context.uId || context.uId === null ){
+            //     console.log(allPost.length);
+            //     if(nbrPost > allPost.length){
+            //        setLoad("Maximum de publications chargé")
+            //     }else{
+            //         console.log(nbrPost , allPost.length );
+            //          dispatch(getPost(nbrPost))
+            //     }          
+            //     window.addEventListener("scroll", ()=>{
+            //         if(nbrPost > allPost.length) {
+            //             return ()=> window.removeEventListener("scroll", ()=>{ })
+            //         }else{
+            //             if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
+            //                             setNbrPost(nbrPost+3)                                                                      
+            //                 }
+            //         }                       
+            //                 })
+            // }
+               
+        return ()=> window.removeEventListener("scroll", ()=>{
+            if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
+                                        setLoad(true)                                                                      
+                            }})
+    },[ nbrPost , load ])
     
     
     return ( 
@@ -49,7 +82,7 @@ const Home = ()=>{
                                     } 
                             })}
                         message={item.message}
-                        date={configDate(item.createdAt)}
+                        date={`Crée le ${configDate(item.createdAt)}`}
                         key={item._id}
                         />
                     })

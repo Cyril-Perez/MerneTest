@@ -19,6 +19,7 @@ function App() {
   
   useEffect(async()=>{
     dispatch(getAllUsers())
+    dispatch(getPost(3))
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
