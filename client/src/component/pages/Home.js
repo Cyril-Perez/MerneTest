@@ -75,6 +75,7 @@ const Home = ()=>{
                 context.uId ? <div className="container-post">{
                     allPost.map((item)=>{
                         return <AllPost
+                        key={item._id}
                         posterID={
                             allUsers.map((element)=>{
                                     if(element._id === item.posterId){
@@ -83,7 +84,7 @@ const Home = ()=>{
                             })}
                         message={item.message}
                         date={`Crée le ${configDate(item.createdAt)}`}
-                        key={item._id}
+                        modif={item._id === context.uId ? "c'est bien moi" : ""}                       
                         />
                     })
                 }</div> : <Log/>             

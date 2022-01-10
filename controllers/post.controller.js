@@ -13,6 +13,8 @@ module.exports.readPost = (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
+  if (!ObjectID.isValid(req.body.posterId))
+  return res.status(400).send("ID unknown : " + req.body.posterId);
   const newPost = new PostModel({
     posterId: req.body.posterId,
     message: req.body.message,
