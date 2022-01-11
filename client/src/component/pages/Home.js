@@ -6,27 +6,26 @@ import AllPost from "../post/Post"
 import "./Pages.css"
 
 import { configDate } from "../tips/function.utils"
-import { getPost } from "../action/action.post"
+import { getPost , majPost } from "../action/action.post"
+
 const Home = ()=>{
+    //data reducer 
     const context = useContext(AppContext)
     const allUsers = useSelector(users => users.AllUsers)
     const allPost = useSelector(state => state.postReducer)
+    //scroll 
     const [nbrPost , setNbrPost] = useState(3)
     const [load, setLoad] = useState(true)
+    //post update
+    const [data, setData] = useState()
+
     const dispatch = useDispatch()
 
-    // const scrollPost = ()=>{
-    //     let num = [...allPost]
-    //     if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
-    //             if(nbrPost > num.length  ){
-    //                 console.log(allPost);
-    //                 let numero = allPost.length+1
-    //                 console.log(nbrPost , allPost.length);
-    //             }else {
-    //                 setNbrPost(nbrPost+3)
-    //             }
-    //       }
-    // }
+    const handleUpdatePost = (id, e)=>{
+        e.preventDefault()
+        console.log(id);
+        majPost( id, {message : data })
+    }
 
     useEffect(()=>{  
         if(load){
@@ -34,32 +33,11 @@ const Home = ()=>{
             setLoad(false)
             setNbrPost(nbrPost + 3)
         }
-
-
         window.addEventListener("scroll", ()=>{
             if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
                 setLoad(true)                                                                      
         }
-        })
-            // if(context.uId || context.uId === null ){
-            //     console.log(allPost.length);
-            //     if(nbrPost > allPost.length){
-            //        setLoad("Maximum de publications chargé")
-            //     }else{
-            //         console.log(nbrPost , allPost.length );
-            //          dispatch(getPost(nbrPost))
-            //     }          
-            //     window.addEventListener("scroll", ()=>{
-            //         if(nbrPost > allPost.length) {
-            //             return ()=> window.removeEventListener("scroll", ()=>{ })
-            //         }else{
-            //             if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
-            //                             setNbrPost(nbrPost+3)                                                                      
-            //                 }
-            //         }                       
-            //                 })
-            // }
-               
+        })     
         return ()=> window.removeEventListener("scroll", ()=>{
             if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
                                         setLoad(true)                                                                      
@@ -84,7 +62,13 @@ const Home = ()=>{
                             })}
                         message={item.message}
                         date={`Crée le ${configDate(item.createdAt)}`}
-                        modif={item._id === context.uId ? "c'est bien moi" : ""}                       
+                        modif={item.posterId === context.uId ? 
+                            <form onSubmit={handleUpdatePost(item.posterId)} className="update-post-txt">
+                                <label>Changer le texte de ma publication</label>
+                                <input onChange={(e)=>{ setData(e.target.value)}} type="text" defaultValue={item.message}/>
+                                <button>Valider</button>
+                            </form>
+                            : ""}                       
                         />
                     })
                 }</div> : <Log/>             
