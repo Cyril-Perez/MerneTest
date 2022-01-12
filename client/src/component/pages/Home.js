@@ -17,14 +17,13 @@ const Home = ()=>{
     const [nbrPost , setNbrPost] = useState(3)
     const [load, setLoad] = useState(true)
     //post update
-    const [data, setData] = useState()
+    const [data, setData] = useState({})
 
     const dispatch = useDispatch()
 
-    const handleUpdatePost = (id, e)=>{
+    const handleUpdatePost = (id ,e)=>{
         e.preventDefault()
-        console.log(id);
-        majPost( id, {message : data })
+       dispatch(majPost ( id, {message : data }))
     }
 
     useEffect(()=>{  
@@ -42,7 +41,7 @@ const Home = ()=>{
             if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {                                  
                                         setLoad(true)                                                                      
                             }})
-    },[ nbrPost , load ])
+    },[ nbrPost,load ])
     
     
     return ( 
@@ -63,9 +62,9 @@ const Home = ()=>{
                         message={item.message}
                         date={`Crée le ${configDate(item.createdAt)}`}
                         modif={item.posterId === context.uId ? 
-                            <form onSubmit={handleUpdatePost(item.posterId)} className="update-post-txt">
+                            <form onSubmit={(e)=>handleUpdatePost(item._id,e)} className="update-post-txt">
                                 <label>Changer le texte de ma publication</label>
-                                <input onChange={(e)=>{ setData(e.target.value)}} type="text" defaultValue={item.message}/>
+                                <input onChange={(e)=>{ setData(e.target.value)}} id={item.posterId} type="text" defaultValue={item.message}/>
                                 <button>Valider</button>
                             </form>
                             : ""}                       

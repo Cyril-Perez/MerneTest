@@ -10,8 +10,14 @@ export default function postReducer(state = initialState, action) {
             return action.payload
             break;
         case UPDATE_POST :
-            let newArray = state.filter((item)=>{ return item._id !== action.payload._id})
-            return [...newArray, action.payload]
+            let index = state.findIndex((item)=>{ return item._id === action.payload._id})
+
+            let newArray = [...state]
+            newArray.splice(index,1,action.payload)
+            
+        
+            
+            return newArray
         default: return state
             break;
     }

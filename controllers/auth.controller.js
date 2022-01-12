@@ -13,7 +13,6 @@ const createToken = (id)=>{
 
 module.exports = {
     signUp : async (req , res)=>{
-
         const {pseudo,email,password,bio} = req.body
         try{
             const user = await UserModel.create({pseudo , email , password , bio})

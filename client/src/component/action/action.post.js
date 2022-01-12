@@ -21,15 +21,16 @@ export const getPost = (nbr)=>{
       })
       .catch((err)=>{   console.log(err) })
     }
-  }
+  };
 
   export const majPost = (id , data)=>{
     return (dispatch)=>{
+      console.log(id , data);
       return axios
       .put(`${process.env.REACT_APP_API_REQUEST}api/post/${id}` , data)
       .then((res)=>{
-         dispatch({type : UPDATE_POST , payload : res})
+         dispatch({type : UPDATE_POST , payload : res.data})
       })
       .catch((err)=>{   console.log(err) })
     }
-  }
+  };
