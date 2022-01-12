@@ -87,8 +87,8 @@ const Profil = () => {
         <>
             <header className="profil-header">
                 {
-                    params.id === "null" ? <Link style={{ textDecoration: "none", color: "black" }} to="/"><h1 style={{textAlign : "center"}}>Veuillez-vous connectez</h1></Link>
-                        :
+                    state._id ? 
+                        
                         <>
                             <div className="content-profil">
                                 <h1>Votre Profil : {state.pseudo}</h1>
@@ -155,11 +155,11 @@ const Profil = () => {
                     }
                 </div>
                 </>
-                }
+                : <div></div>}
             </header>
             <>
             {
-                params.id === "null" ? "" : 
+                state._id ?  
                 <section>
                 <div className="content-bio">
                     <h2>Bio</h2>
@@ -169,6 +169,7 @@ const Profil = () => {
                         : <button onClick={() => { setVerifyBio(true) }} className="send-button-bio">Modifier la bio</button>}
                 </div>
             </section>
+            : ""
             }
             
             </>

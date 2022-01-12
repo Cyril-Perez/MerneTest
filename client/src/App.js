@@ -11,10 +11,13 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllUsers, getUser } from "./component/action/action.users";
 import { getPost } from "./component/action/action.post";
+import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.profil";
 
 
 function App() {
   const [uId , setuId] = useState(null)
+  const [acces , setAcces] = useState(false)
+
   const dispatch = useDispatch()
   
   useEffect(async()=>{
@@ -23,6 +26,7 @@ function App() {
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
+        setAcces(true)
         setuId(response)
         dispatch(getUser(response)) 
          
@@ -33,14 +37,15 @@ function App() {
   },[uId])
   const appContextValue = {
     uId,
-    setuId
+    setuId,
+    setAcces
   }
   return (
     <AppContext.Provider value={appContextValue}>
       <Navbar/>
           <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/profil/:id" element={<Profil/>}/>
+              <Route path="/profil/:id" element={ acces ? <Profil/> : <ErrorLogProfil/>}/>
           </Routes>
     </AppContext.Provider>
   );

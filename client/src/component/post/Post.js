@@ -10,8 +10,14 @@ const AllPost = (props)=>{
             <p>{props.posterID}</p>
             <p>{props.message}</p> 
             <p>{props.date}</p>
-            <p>{props.modif}</p>
-            {/* {
+            {
+                user._id ? <p>{props.modif}</p> : ""
+            }
+            
+            {
+                 user._id ? <p>{props.delete}</p> : ""
+            
+            /* {
               allPost[0] ? allPost.map((item)=>{
                   console.log(item);
                     if(item.posterId === user._id){

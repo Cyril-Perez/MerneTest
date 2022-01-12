@@ -9,7 +9,6 @@ import {  useSelector } from "react-redux"
 import "./log.css"
 const Log = (props)=>{
     // const [load , setLoad] = useState(true)
-    const context = useContext(AppContext)
     const [check , setCheck] = useState(false)
     const allPost = useSelector(state => state.postReducer)
     // useEffect(() => {

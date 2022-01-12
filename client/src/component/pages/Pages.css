@@ -217,9 +217,18 @@ header{
     width:  100% ;
     margin: 10px auto;
 }
-
+/*form update bio*/
 .update-post-txt button {
     background-color: black;
     width: 150px;
     color: white;
+}
+/*delete post */
+.img-delete{
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }

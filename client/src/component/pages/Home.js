@@ -67,7 +67,10 @@ const Home = ()=>{
                                 <input onChange={(e)=>{ setData(e.target.value)}} id={item.posterId} type="text" defaultValue={item.message}/>
                                 <button>Valider</button>
                             </form>
-                            : ""}                       
+                            : ""}
+                        delete={item.posterId === context.uId ? <img className="img-delete" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`} alt="icon-delete-post"/> 
+                        
+                        : ""}                      
                         />
                     })
                 }</div> : <Log/>             

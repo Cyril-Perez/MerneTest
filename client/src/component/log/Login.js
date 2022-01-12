@@ -44,6 +44,7 @@ const Login = ()=>{
                setDataErr(response.erreur) 
             } else{               
                 context.setuId(response.user)
+                context.setAcces(true)
                 dispatch(getUser(response.user))                   
             } 
         }).catch((err)=>{
