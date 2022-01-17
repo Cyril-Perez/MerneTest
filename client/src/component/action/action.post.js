@@ -2,6 +2,8 @@ import axios from "axios";
 
 export const GET_POST = "GET_POST"
 export const UPDATE_POST = "UPDATE_POST"
+export const DELETE_POST = "DELETE_POST"
+
 
 
 export const getPost = (nbr)=>{
@@ -30,6 +32,18 @@ export const getPost = (nbr)=>{
       .put(`${process.env.REACT_APP_API_REQUEST}api/post/${id}` , data)
       .then((res)=>{
          dispatch({type : UPDATE_POST , payload : res.data})
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+
+  
+  export const deletePost = (id)=>{
+    return (dispatch)=>{     
+      return axios
+      .delete(`${process.env.REACT_APP_API_REQUEST}api/post/${id}`)
+      .then((res)=>{
+         dispatch({type : DELETE_POST , payload : res.data})
       })
       .catch((err)=>{   console.log(err) })
     }

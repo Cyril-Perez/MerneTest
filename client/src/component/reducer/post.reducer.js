@@ -1,4 +1,4 @@
-import { GET_POST , UPDATE_POST } from "../action/action.post";
+import { GET_POST , UPDATE_POST , DELETE_POST } from "../action/action.post";
 
 const initialState = []
 
@@ -9,15 +9,16 @@ export default function postReducer(state = initialState, action) {
         case GET_POST:
             return action.payload
             break;
-        case UPDATE_POST :
-            let index = state.findIndex((item)=>{ return item._id === action.payload._id})
 
-            let newArray = [...state]
-            newArray.splice(index,1,action.payload)
-            
+        case UPDATE_POST :
+            let indexUpdate = state.findIndex((item)=>{ return item._id === action.payload._id})
+            let newArrayUpdate = [...state]
+            newArrayUpdate.splice(indexUpdate,1,action.payload)
+            return newArrayUpdate
         
-            
-            return newArray
+        case DELETE_POST :
+            let newArrayDelete = state.filter((item)=>{ return item._id !== action.payload._id})
+            return newArrayDelete
         default: return state
             break;
     }

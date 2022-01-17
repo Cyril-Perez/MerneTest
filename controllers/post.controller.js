@@ -56,7 +56,7 @@ module.exports.deletePost = async (req, res) => {
 
   try {
     await PostModel.deleteOne({ _id: req.params.id })
-    return res.status(200).json({ message: "utlisateur bien supprimer" })
+    return res.status(200).json({ message: "utlisateur bien supprimer" , _id : req.params.id})
   } catch (err) {
     return res.status(500).json({ message: err })
   }

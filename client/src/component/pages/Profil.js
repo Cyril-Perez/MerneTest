@@ -45,7 +45,7 @@ const Profil = () => {
             for (let key of data.entries()) {
                 console.log(key[0] + ', ' + key[1])
             }
-            if (state._id === "http://localhost:3000/images/randomUser.png") {
+            if (state.picture === "http://localhost:3000/images/randomUser.png") {
                 dispatch(uploadPics(data, state._id))
             } else {
                 dispatch(uploadSetPics(data, state._id))
