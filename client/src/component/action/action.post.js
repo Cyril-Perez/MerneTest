@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_POST = "GET_POST"
+export const CREATE_POST = "CREATE_POST"
 export const UPDATE_POST = "UPDATE_POST"
 export const DELETE_POST = "DELETE_POST"
 
@@ -20,6 +21,18 @@ export const getPost = (nbr)=>{
             let newArray = responsePost.data.slice(0, nbr)
          dispatch({type : GET_POST , payload : newArray})
         }
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+
+  export const createPost = (data)=>{
+    return (dispatch)=>{
+      console.log(data);
+      return axios
+      .post(`${process.env.REACT_APP_API_REQUEST}api/post` , data)
+      .then((res)=>{
+         dispatch({type : CREATE_POST , payload : res.data})
       })
       .catch((err)=>{   console.log(err) })
     }

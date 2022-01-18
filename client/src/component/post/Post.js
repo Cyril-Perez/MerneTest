@@ -1,5 +1,5 @@
 import "./post.css"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 const AllPost = (props)=>{
     const user = useSelector(users => users.fetchReducer)
@@ -8,6 +8,9 @@ const AllPost = (props)=>{
     return (
         <div className="one-post">
             <p>{props.posterID}</p>
+            {
+                props.pics ? <img className="img-post"src={props.srcPics}/> : ""
+            }
             <p>{props.message}</p> 
             <p>{props.date}</p>
             {

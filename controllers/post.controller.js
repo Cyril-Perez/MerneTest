@@ -1,5 +1,6 @@
 const PostModel = require("../models/post.model")
 const UserModel = require("../models/user.models")
+const fs = require("fs")
 //objectId verifie si notre id dans la requete parmas est bien dans notre base de données
 const ObjectID = require("mongoose").Types.ObjectId
 
@@ -15,14 +16,24 @@ module.exports.readPost = (req, res) => {
 module.exports.createPost = async (req, res) => {
   if (!ObjectID.isValid(req.body.posterId))
   return res.status(400).send("ID unknown : " + req.body.posterId);
-  const newPost = new PostModel({
+  let newPost ;
+  if(req.file === undefined) {
+      newPost = new PostModel({
+      posterId: req.body.posterId,
+      message: req.body.message,
+      likers: [],
+      comments: [],
+    })
+  } else {
+    newPost = new PostModel({
     posterId: req.body.posterId,
     message: req.body.message,
-    picture : req.body.picture,
-    video: req.body.video,
+    picture : `${process.env.URL_WEB}/images/${req.file.filename}`,
     likers: [],
     comments: [],
   })
+  }
+  
 
   try {
     const post = await newPost.save()
@@ -55,8 +66,22 @@ module.exports.deletePost = async (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    await PostModel.deleteOne({ _id: req.params.id })
-    return res.status(200).json({ message: "utlisateur bien supprimer" , _id : req.params.id})
+    const pictureUrl = await PostModel.findOne({ _id: req.params.id }) 
+    if(pictureUrl.picture){
+      const nameUrl = pictureUrl.picture.split('/images/')[1]
+      fs.unlink(`client/public/images/${nameUrl}`, async ()=>{
+        try{
+          await PostModel.deleteOne({ _id: req.params.id })
+          return res.status(200).json({ message: "poste bien supprimer" , _id : req.params.id})
+        }catch (err) {
+          return res.status(400).json({message : "error delete pictures"})
+        }
+      })
+    } else {
+          await PostModel.deleteOne({ _id: req.params.id })
+          return res.status(200).json({ message: "poste bien supprimer" , _id : req.params.id})
+    }
+    
   } catch (err) {
     return res.status(500).json({ message: err })
   }

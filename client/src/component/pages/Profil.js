@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
-import { Link } from "react-router-dom"
 import { uploadPics, uploadSetPics, majBio } from "../action/action.users"
 import { configDate } from "../tips/function.utils"
 import "./Pages.css"

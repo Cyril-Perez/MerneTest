@@ -1,0 +1,14 @@
+#err-file-post{
+    color: black;
+}
+#textarea-message-post{
+    padding: 10px;
+    width: 400px;
+    height: 200px;
+    border-radius: 3px ;
+    font-weight: 700;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+    resize: none;
+    background-color:  transparent;
+}

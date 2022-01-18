@@ -29,7 +29,7 @@ module.exports.uploadProfilAdd = async (req, res) => {
 }
 
 module.exports.uploadProfilPut = async (req, res) => {
-    console.log(req.file);
+    console.log(req.body.name);
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID unknown : " + req.params.id);
 

@@ -1,4 +1,4 @@
-import { GET_POST , UPDATE_POST , DELETE_POST } from "../action/action.post";
+import { GET_POST , CREATE_POST, UPDATE_POST , DELETE_POST } from "../action/action.post";
 
 const initialState = []
 
@@ -9,6 +9,11 @@ export default function postReducer(state = initialState, action) {
         case GET_POST:
             return action.payload
             break;
+
+        case CREATE_POST :
+            let newArrCreate = [...state]
+            newArrCreate.unshift(action.payload)
+            return newArrCreate
 
         case UPDATE_POST :
             let indexUpdate = state.findIndex((item)=>{ return item._id === action.payload._id})

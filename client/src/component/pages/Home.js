@@ -7,6 +7,7 @@ import "./Pages.css"
 
 import { configDate } from "../tips/function.utils"
 import { getPost , majPost , deletePost } from "../action/action.post"
+import CreatePost from "../createPost/CreatePost"
 
 const Home = ()=>{
     //data reducer 
@@ -53,7 +54,6 @@ const Home = ()=>{
     const handleDeletePost = (id)=>{
         dispatch(deletePost(id))
     }
-
     
     
     return ( 
@@ -65,13 +65,15 @@ const Home = ()=>{
                     <div className="container-create-post">
                     <p onClick={()=>{setCreatePost(!createPost)}} className="link-create-post">{createPost ? "+" : "-"}</p>
                     {
-                        createPost ? "" : <p>super</p>
+                        createPost ? "" : <CreatePost/>
                     }
                     </div>
                     {
                     allPost.map((item)=>{
                         return <AllPost
                         key={item._id}
+                        pics={item.picture ? true : false }
+                        srcPics={item.picture}
                         posterID={
                             allUsers.map((element)=>{
                                     if(element._id === item.posterId){
