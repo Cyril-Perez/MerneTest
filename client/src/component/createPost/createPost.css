@@ -1,5 +1,6 @@
 #err-file-post{
     color: black;
+    padding-left: 10px;
 }
 #textarea-message-post{
     padding: 10px;
@@ -11,4 +12,42 @@
     letter-spacing: 0.5px;
     resize: none;
     background-color:  transparent;
+    background-color: whitesmoke;
 }
+.form-create-post {
+    padding: 25px;
+    width: 800px;
+    background-color: rgb(206, 197, 197);
+    box-shadow: 0px 1px 0px 10px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    transition: 0.4s ease-in-out;
+}
+#txt-message-post-label{
+    margin-top: 10px;
+}
+#file-post{
+    display: none;
+}
+#change-file-post{
+    cursor: pointer;
+    background-color: black;
+    width: 250px;
+    padding: 15px;
+    border-radius: 25px;
+    color: whitesmoke;
+    text-align: center;
+    margin: 15px 0px 10px 0px;
+}
+#button-create-post{
+    box-shadow: 2px 2px 1px black;
+    background-color: black;
+    color: white;
+}
+.title-create-post{
+    background-color: black;
+    color: black;
+    padding: 10px 0px 7px 15px;
+    color: white;
+}
+

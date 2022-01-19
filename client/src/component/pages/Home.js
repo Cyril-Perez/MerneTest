@@ -65,7 +65,7 @@ const Home = ()=>{
                     <div className="container-create-post">
                     <p onClick={()=>{setCreatePost(!createPost)}} className="link-create-post">{createPost ? "+" : "-"}</p>
                     {
-                        createPost ? "" : <CreatePost/>
+                        createPost ? "" : <CreatePost verif={setCreatePost}/>
                     }
                     </div>
                     {
@@ -80,7 +80,9 @@ const Home = ()=>{
                                     return element.pseudo
                                     } 
                             })}
+                        messageClassName={item.posterId === context.uId ? "text-message-user" : "text-message-all"}
                         message={item.message}
+                        dateClassName={item.posterId === context.uId ? "text-date-user" : "text-date-all"}
                         date={`Crée le ${configDate(item.createdAt)}`}
                         modif={item.posterId === context.uId ? 
                             <form onSubmit={(e)=>handleUpdatePost(item._id,e)} className="update-post-txt">

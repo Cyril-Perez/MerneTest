@@ -27,13 +27,14 @@ const CreatePost = (props)=>{
                     console.log(key[0] + ', ' + key[1])
                 }
                 dispatch(createPost(data))
+                props.verif(true)
             } else {
                 // const dataNotPics = new FormData();
                 // dataNotPics.append("posterId", user._id)
                 // dataNotPics.append("message", description)
 
                 dispatch(createPost({posterId : user._id, message : description}))
-
+                props.verif(true)
                 setFileErr("aucun fichier")
             }
     
@@ -44,14 +45,14 @@ const CreatePost = (props)=>{
         }
 
         return (
-            <form onSubmit={handleSubmitCreatePost}> 
-                <h3>Crée votre post</h3>
-                <label>Message</label>
+            <form className="form-create-post" onSubmit={handleSubmitCreatePost}> 
+                <h3 className="title-create-post" id={props.verif}>Crée votre post</h3>
+                <label htmlFor="textarea-message-post" id="txt-message-post-label">Message</label>
                 <textarea onChange={(e)=>{setDescription(e.target.value)}} id="textarea-message-post" maxLength="400" placeholder="entrez votre message" ></textarea>
-                <label htmlFor="file-post">Selectionner un fichier</label>
+                <label htmlFor="file-post" id="change-file-post">Selectionner un fichier</label>
                 <input onChange={handleSaveFilePost} type="file" id="file-post" name="file-post" accept=".jpg , .jpeg , .png" />
                 <p id="err-file-post">{filePost ? filePost.name : "aucun fichier"}</p>
-                <button>Valider</button>
+                <button id="button-create-post">Valider</button>
             </form>
         )
     }

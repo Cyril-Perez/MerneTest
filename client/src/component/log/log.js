@@ -11,6 +11,7 @@ const Log = (props)=>{
     // const [load , setLoad] = useState(true)
     const [check , setCheck] = useState(false)
     const allPost = useSelector(state => state.postReducer)
+    const context = useContext(AppContext)
     // useEffect(() => {
     //         !loading(context.uId) && setLoad(false);
     // }, [context]);
@@ -32,8 +33,7 @@ const Log = (props)=>{
         //     </div></div> : 
         <>
         { allPost[0] ? 
-            <div className="container-form">
-                
+            <div className="container-form">               
                     <div className="container-choice">
                         <h2 onClick={handleClickChoice} id="login-choice">Connexion</h2>
                         <h2 onClick={handleClickChoice} id="register-choice">Inscription</h2>
