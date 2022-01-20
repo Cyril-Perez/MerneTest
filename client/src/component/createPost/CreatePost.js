@@ -8,13 +8,17 @@ const CreatePost = (props)=>{
         const dispatch = useDispatch()
         //create post 
         const [filePost, setFilePost] = useState()
-        const [fileErr, setFileErr] = useState("")
+        const [fileErr, setFileErr] = useState("aucun fichier")
         //message post
         const [description , setDescription] = useState("")
        
 
         const handleSubmitCreatePost = (e) => {
             e.preventDefault()
+            const active = document.querySelector("#textarea-message-post")
+            
+                
+            
             if (filePost) {
                 const data = new FormData();
                 // let fileField = document.querySelector("input[type='file']");
@@ -32,10 +36,14 @@ const CreatePost = (props)=>{
                 // const dataNotPics = new FormData();
                 // dataNotPics.append("posterId", user._id)
                 // dataNotPics.append("message", description)
-
+                if(description.length > 0){
                 dispatch(createPost({posterId : user._id, message : description}))
                 props.verif(true)
-                setFileErr("aucun fichier")
+                setFileErr("aucun fichier")    
+                }else {
+                    setFileErr("Veuillez-rentrez un message ou un fichier.")
+                }
+                
             }
     
         }
@@ -51,7 +59,7 @@ const CreatePost = (props)=>{
                 <textarea onChange={(e)=>{setDescription(e.target.value)}} id="textarea-message-post" maxLength="400" placeholder="entrez votre message" ></textarea>
                 <label htmlFor="file-post" id="change-file-post">Selectionner un fichier</label>
                 <input onChange={handleSaveFilePost} type="file" id="file-post" name="file-post" accept=".jpg , .jpeg , .png" />
-                <p id="err-file-post">{filePost ? filePost.name : "aucun fichier"}</p>
+                <p id={fileErr === "Veuillez-rentrez un message ou un fichier." ? "err-file-post-false" : "err-file-post"}>{filePost ? filePost.name : fileErr}</p>
                 <button id="button-create-post">Valider</button>
             </form>
         )

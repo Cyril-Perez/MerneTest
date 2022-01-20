@@ -2,6 +2,9 @@
     color: black;
     padding-left: 10px;
 }
+#err-file-post-false{
+    color: rgb(153, 11, 11);
+}
 #textarea-message-post{
     padding: 10px;
     width: 400px;
@@ -43,11 +46,17 @@
     box-shadow: 2px 2px 1px black;
     background-color: black;
     color: white;
+    transition: 0.3s ease-in-out;
+}
+#button-create-post:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 2px 2px 2px black;
+
 }
 .title-create-post{
-    background-color: black;
-    color: black;
+    
     padding: 10px 0px 7px 15px;
-    color: white;
+    color: black;
 }
 

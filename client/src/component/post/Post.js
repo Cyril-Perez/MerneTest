@@ -13,6 +13,7 @@ const AllPost = (props)=>{
             }
             <p className={props.messageClassName}>{props.message}</p> 
             <p className={props.dateClassName}>{props.date}</p>
+            
             {
                 user._id ? <p>{props.modif}</p> : ""
             }

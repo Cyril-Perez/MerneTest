@@ -231,6 +231,10 @@ header{
     position: absolute;
     right: 5px;
     bottom: 5px;
+    transition: 0.2s ease-in-out;
+}
+.img-delete:hover {
+    filter: invert(11%) sepia(83%) saturate(6509%) hue-rotate(346deg) brightness(78%) contrast(108%);
 }
 
 /*button creation post*/
