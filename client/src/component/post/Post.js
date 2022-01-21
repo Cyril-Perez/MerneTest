@@ -13,7 +13,13 @@ const AllPost = (props)=>{
             }
             <p className={props.messageClassName}>{props.message}</p> 
             <p className={props.dateClassName}>{props.date}</p>
-            
+            <div className="container-heart">
+                <p>{props.likers}</p>
+                {
+                    props.imgLike.includes(user._id) ? <img className="img-like-unlike" src={`${process.env.PUBLIC_URL}/images/img-g/like.svg`} alt="image-likes" /> : 
+                    <img className="img-like-unlike" src={`${process.env.PUBLIC_URL}/images/img-g/unLike.svg`} alt="image-unlike"/>
+                }
+            </div>
             {
                 user._id ? <p>{props.modif}</p> : ""
             }
