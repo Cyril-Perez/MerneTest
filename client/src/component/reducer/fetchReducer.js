@@ -1,3 +1,4 @@
+import {LIKE_POST_USER, UNLIKE_POST_USER } from "../action/action.post";
 import { GET_USER, UPLOAD_PICS, UPLOADSET_PICS , SET_BIO } from "../action/action.users";
 
 const initalState = {
@@ -22,6 +23,20 @@ export default function fetchReducer(state= initalState, action ) {
                 ...state,
                 bio : action.payload
             }
+        case LIKE_POST_USER :
+            let newArrayLikePost = [...state.likes]
+            newArrayLikePost.unshift(action.payload)
+            return {
+                ...state,
+                likes : [...newArrayLikePost]
+            }
+        case UNLIKE_POST_USER :
+            let newArrayUnlikePost = state.likes.filter((item)=>{ return item !== action.payload})
+            return {
+                ...state,
+                likes : [...newArrayUnlikePost]
+            }
+
         default: return state
            
     }

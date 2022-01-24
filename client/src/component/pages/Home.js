@@ -83,7 +83,7 @@ const Home = ()=>{
                         messageClassName={item.posterId === context.uId ? "text-message-user" : "text-message-all"}
                         message={item.message}
                         dateClassName={item.posterId === context.uId ? "text-date-user" : "text-date-all"}
-                        posterPost={item.posterId}
+                        onePost={item._id}
                         likers={item.likers.length}
                         imgLike={item.likers}
                         date={`Crée le ${configDate(item.createdAt)}`}

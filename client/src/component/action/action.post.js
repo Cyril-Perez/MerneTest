@@ -4,6 +4,14 @@ export const GET_POST = "GET_POST"
 export const CREATE_POST = "CREATE_POST"
 export const UPDATE_POST = "UPDATE_POST"
 export const DELETE_POST = "DELETE_POST"
+export const LIKE_POST = "LIKE_POST"
+export const LIKE_POST_USER = "LIKE_POST_USER"
+export const UNLIKE_POST = "UNLIKE_POST"
+export const UNLIKE_POST_USER = "UNLIKE_POST_USER"
+
+
+
+
 
 
 
@@ -57,6 +65,34 @@ export const getPost = (nbr)=>{
       .delete(`${process.env.REACT_APP_API_REQUEST}api/post/${id}`)
       .then((res)=>{
          dispatch({type : DELETE_POST , payload : res.data})
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+
+  export const likePost = (id , data)=>{
+    console.log(id);
+    console.log(data);
+    return (dispatch)=>{     
+      return axios
+      .patch(`${process.env.REACT_APP_API_REQUEST}api/post/like-post/${id}`, data)
+      .then((res)=>{
+         dispatch({type : LIKE_POST_USER , payload : id})
+         dispatch({type : LIKE_POST , payload : res.data})
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+
+  export const unLikePost = (id , data)=>{
+    console.log(id);
+    console.log(data);
+    return (dispatch)=>{     
+      return axios
+      .patch(`${process.env.REACT_APP_API_REQUEST}api/post/unlike-post/${id}`, data)
+      .then((res)=>{
+         dispatch({type : UNLIKE_POST_USER , payload : id})
+         dispatch({type : UNLIKE_POST , payload : res.data})
       })
       .catch((err)=>{   console.log(err) })
     }
