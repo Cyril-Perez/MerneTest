@@ -33,11 +33,10 @@ export default function postReducer(state = initialState, action) {
 
         case UNLIKE_POST : 
             let indexUnlikePost = state.findIndex((item)=>{ return item._id === action.payload._id})
-            console.log(indexUnlikePost);
             let newArrayUnlikePost = [...state]
-            console.log(newArrayUnlikePost);
             newArrayUnlikePost.splice(indexUnlikePost,1,action.payload)
-            console.log(action.payload);
+            return newArrayUnlikePost
+
         default: return state
             break;
     }

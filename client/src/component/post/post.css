@@ -54,3 +54,11 @@
     width: 28px;
     cursor: pointer;
 }
+
+/*SECTION COMMENTS*/
+.icon-comment-views{
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}

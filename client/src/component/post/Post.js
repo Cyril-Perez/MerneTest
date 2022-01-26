@@ -9,6 +9,8 @@ const AllPost = (props)=>{
     const allPost = useSelector(state => state.postReducer)
     const dispatch = useDispatch()
 
+    //button view comments
+    const [commentViews, setCommentViews] = useState(true)
 
     const handleClickLike = (id, userId)=>{
         dispatch(likePost(id , {id : userId}))
@@ -23,7 +25,11 @@ const AllPost = (props)=>{
             {
                 props.pics ? <img className="img-post"src={props.srcPics}/> : ""
             }
-            <p className={props.messageClassName}>{props.message}</p> 
+            <p className={props.messageClassName}>{props.message}</p>
+            <img onClick={()=>{setCommentViews(!commentViews)}} src={`${process.env.PUBLIC_URL}/images/img-g/iconComments.svg`} className="icon-comment-views"/>
+            {
+                commentViews ? <div className="container-comments-post">hello</div> : ""
+            }
             <p className={props.dateClassName}>{props.date}</p>
             <div className="container-heart">
                 <p>{props.likers}</p>
