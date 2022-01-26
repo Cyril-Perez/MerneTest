@@ -82,6 +82,7 @@ const Home = ()=>{
                             })}
                         messageClassName={item.posterId === context.uId ? "text-message-user" : "text-message-all"}
                         message={item.message}
+                        arrayComments={item.comments}
                         dateClassName={item.posterId === context.uId ? "text-date-user" : "text-date-all"}
                         onePost={item._id}
                         likers={item.likers.length}

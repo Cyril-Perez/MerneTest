@@ -2,6 +2,7 @@ import "./post.css"
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { likePost , unLikePost } from "../action/action.post"
+import CommentPost from "./commentPost"
 
 
 const AllPost = (props)=>{
@@ -10,7 +11,7 @@ const AllPost = (props)=>{
     const dispatch = useDispatch()
 
     //button view comments
-    const [commentViews, setCommentViews] = useState(true)
+    const [commentViews, setCommentViews] = useState(false)
 
     const handleClickLike = (id, userId)=>{
         dispatch(likePost(id , {id : userId}))
@@ -28,7 +29,14 @@ const AllPost = (props)=>{
             <p className={props.messageClassName}>{props.message}</p>
             <img onClick={()=>{setCommentViews(!commentViews)}} src={`${process.env.PUBLIC_URL}/images/img-g/iconComments.svg`} className="icon-comment-views"/>
             {
-                commentViews ? <div className="container-comments-post">hello</div> : ""
+                commentViews ? <div className="container-comments-post">{ props.arrayComments.length >= 0 ? props.arrayComments.map((element)=>{
+                    return <CommentPost 
+                    key={element._id}
+                    posterCommentId={element.commenterId}
+                    posterPseudo={element.commenterPseudo}
+                    commentMessage={element.text}
+                    />
+                }) : <p>Aucun commentaire</p> }</div> : ""
             }
             <p className={props.dateClassName}>{props.date}</p>
             <div className="container-heart">
