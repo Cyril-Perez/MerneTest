@@ -72,8 +72,14 @@ const Home = ()=>{
                     allPost.map((item)=>{
                         return <AllPost
                         key={item._id}
+                        srcPicsProfil={allUsers.map((pics)=>{
+                            if(pics._id === item.posterId){
+                                return pics.picture
+                            }
+                        })}
                         pics={item.picture ? true : false }
                         srcPics={item.picture}
+                        posterData={item.posterId}
                         posterID={
                             allUsers.map((element)=>{
                                     if(element._id === item.posterId){

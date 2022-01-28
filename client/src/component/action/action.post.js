@@ -8,12 +8,8 @@ export const LIKE_POST = "LIKE_POST"
 export const LIKE_POST_USER = "LIKE_POST_USER"
 export const UNLIKE_POST = "UNLIKE_POST"
 export const UNLIKE_POST_USER = "UNLIKE_POST_USER"
-
-
-
-
-
-
+export const DELETE_COMMENT_POST = "DELETE_COMMENT_POST"
+export const CREATE_COMMENT_POST = "CREATE_COMMENT_POST"
 
 export const getPost = (nbr)=>{
     return (dispatch)=>{
@@ -97,3 +93,30 @@ export const getPost = (nbr)=>{
       .catch((err)=>{   console.log(err) })
     }
   };
+
+  export const createCommentPost = (id , data)=>{
+    console.log(id);
+    console.log(data);
+    return (dispatch)=>{     
+      return axios
+      .patch(`${process.env.REACT_APP_API_REQUEST}api/post/comment-post/${id}`, data)
+      .then((res)=>{
+         dispatch({type : CREATE_COMMENT_POST , payload : res.data})
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+
+  export const deleteCommentPost = (id , data)=>{
+    console.log(id);
+    console.log(data);
+    return (dispatch)=>{     
+      return axios
+      .patch(`${process.env.REACT_APP_API_REQUEST}api/post/delete-comment-post/${id}`, data)
+      .then((res)=>{
+         dispatch({type : DELETE_COMMENT_POST , payload : res.data})
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };
+

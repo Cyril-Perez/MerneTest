@@ -1,4 +1,4 @@
-import { GET_POST , CREATE_POST, UPDATE_POST , DELETE_POST ,LIKE_POST, UNLIKE_POST } from "../action/action.post";
+import { GET_POST , CREATE_POST, UPDATE_POST , DELETE_POST ,LIKE_POST, UNLIKE_POST , DELETE_COMMENT_POST, CREATE_COMMENT_POST } from "../action/action.post";
 
 const initialState = []
 
@@ -36,6 +36,18 @@ export default function postReducer(state = initialState, action) {
             let newArrayUnlikePost = [...state]
             newArrayUnlikePost.splice(indexUnlikePost,1,action.payload)
             return newArrayUnlikePost
+        
+        case DELETE_COMMENT_POST :
+            let indexDeleteCommentPost = state.findIndex((item)=>{ return item._id === action.payload._id})
+            let newArrayDeleteCommentPost = [...state]
+            newArrayDeleteCommentPost.splice(indexDeleteCommentPost,1,action.payload)
+            return newArrayDeleteCommentPost
+
+        case CREATE_COMMENT_POST:
+            let indexCreateComment = state.findIndex((item)=>{ return item._id === action.payload._id})
+            let newArrayCreateComment = [...state]
+            newArrayCreateComment.splice(indexCreateComment,1,action.payload)
+            return newArrayCreateComment
 
         default: return state
             break;
