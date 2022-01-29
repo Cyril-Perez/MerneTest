@@ -88,7 +88,7 @@ module.exports = {
         },
         { new: true, upsert: true }
       )
-      // action sur l'utilisateur qui a été follow
+      // action sur l'utilisateur qui a été Unfollow
       await UserModel.findOneAndUpdate(
         { _id: req.body.idToUnFollow },
         {

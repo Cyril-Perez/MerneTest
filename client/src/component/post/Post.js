@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { createCommentPost, deleteCommentPost, likePost , unLikePost } from "../action/action.post"
 import CommentPost from "./commentPost"
+import { funcFollow } from "../action/action.users"
 
 
 const AllPost = (props)=>{
@@ -31,12 +32,17 @@ const AllPost = (props)=>{
         e.preventDefault()
         dispatch(createCommentPost(id, data))
     }
+
+    const handleClickFollow = (id , data)=>{
+        dispatch(funcFollow(id, {idToFollow : data}))
+    }
     
     return (
         <div className="one-post">
             <div className="container-img-profil-post">
                 <img className="post-pics-profil" src={props.srcPicsProfil.join("")}/>
                 <p>{props.posterID}</p>
+                {user.following && user.following.includes(props.posterData) ? <img onClick={()=>{handleClickFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-follow.svg`} className="img-follow-unfollow"/> : <img  onClick={()=>{handleClickFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-unfollow.svg`} className="img-follow-unfollow"/>}
             </div>        
             {
                 props.pics ? <img className="img-post"src={props.srcPics}/> : ""

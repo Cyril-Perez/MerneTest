@@ -1,5 +1,5 @@
 import {LIKE_POST_USER, UNLIKE_POST_USER } from "../action/action.post";
-import { GET_USER, UPLOAD_PICS, UPLOADSET_PICS , SET_BIO } from "../action/action.users";
+import { GET_USER, UPLOAD_PICS, UPLOADSET_PICS , SET_BIO, FUNC_FOLLOW } from "../action/action.users";
 
 const initalState = {
     _id : "",
@@ -36,7 +36,11 @@ export default function fetchReducer(state= initalState, action ) {
                 ...state,
                 likes : [...newArrayUnlikePost]
             }
-
+        case FUNC_FOLLOW :
+            return {
+                ...state,
+                following : [...action.payload.following]
+            }
         default: return state
            
     }

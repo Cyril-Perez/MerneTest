@@ -5,6 +5,9 @@ export const GET_ALLUSERS = "GET_ALLUSERS";
 export const UPLOAD_PICS = "UPLOAD_PICS"
 export const UPLOADSET_PICS = "UPLOADSET_PICS"
 export const SET_BIO = "SET_BIO"
+export const FUNC_FOLLOW = "FUNC_FOLLOW"
+export const FUNC_FOLLOW_IDFOLLOW = "FUNC_FOLLOW_IDFOLLOW"
+
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -100,5 +103,18 @@ export const getAllUsers = ()=>{
         dispatch({ type : GET_ALLUSERS , payload : res.data})
       })
       .catch((err)=> console.log(err))
+  }
+}
+
+export const funcFollow = (id,data)=>{
+  return (dispatch)=>{
+    return axios
+    .patch(`${process.env.REACT_APP_API_REQUEST}api/user/follow/${id}`, data)
+    .then((res)=>{
+      dispatch({type : FUNC_FOLLOW, payload : res.data})
+      dispatch({type : FUNC_FOLLOW_IDFOLLOW , payload : {_id : id , data}})
+
+    })
+    .catch((err)=>{console.log(err)})
   }
 }
