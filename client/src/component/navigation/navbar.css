@@ -1,15 +1,49 @@
-.nav{
+.navigation{
     position: fixed;
-    width: 100px;
+    height: 100vh;
     background-color: rgb(206, 197, 197);
-    box-shadow: 3px 3px 1px black;
+    box-shadow: 4px 0px 4px 0px #000000;
     top: 0px;
-    left: 0px;
-    
+    left: -145px;
+    width: 135px;
+    transition: 0.4s ease-in-out;
+    z-index: 20;
 }
-.nav p {
+.active {
+    left: 0px;
+}
+.no-active {
+    box-shadow: 8px 0px 0px 0px #000000;
+}
+.img-logout{
+    width: 26px;
+    height: 26px;
+    margin: 10px 0px 0px 14px;
+    cursor: pointer;
+}
+.navigation p {
     font-weight: 700;
     padding: 15px;
-    letter-spacing: 1px;
+    
     cursor: pointer;
+}
+.burger-button{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    position: fixed ;
+    top: 10px ;
+    right: 10px;
+    z-index: 100;
+    background-color: white;
+    border-radius: 35px;
+}
+@media screen and (max-width : 390px) {
+    .burger-button {
+        top: 15px;
+        right: 6px;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+    }    
 }

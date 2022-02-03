@@ -1,4 +1,4 @@
-import { GET_ALLUSERS , FUNC_FOLLOW_IDFOLLOW} from "../action/action.users";
+import { GET_ALLUSERS , FUNC_FOLLOW_IDFOLLOW, FUNC_UNFOLLOW_IDFOLLOW} from "../action/action.users";
 
 const initialState = [
     {
@@ -21,8 +21,17 @@ export default function AllUsersReducer(state = initialState, action) {
             let indexUserFollow = state.findIndex((element)=>{ return element._id === action.payload.data.idToFollow})
             let newArrayUserFollow = [...state]
             newArrayUserFollow.splice(indexUserFollow,1,newObject[0])
+            return newArrayUserFollow 
 
-        return newArrayUserFollow 
+        case FUNC_UNFOLLOW_IDFOLLOW :
+            let newObjectU = state.filter((item)=>{ return item._id === action.payload.data.idToUnFollow})
+            let indexUnFollow = newObjectU[0].followers.findIndex((item)=>{return item === action.payload._id})
+            newObjectU[0].followers.splice(indexUnFollow,1)
+            let indexUserUnfollow = state.findIndex((item)=>{ return item._id === action.payload.data.idToUnFollow})
+            let newArrayUserUnfollow = [...state]
+            newArrayUserUnfollow.splice(indexUserUnfollow,1,newObjectU[0])
+            return newArrayUserUnfollow
+
         break
         default: return state
            

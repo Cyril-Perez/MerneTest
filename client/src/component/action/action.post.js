@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const GET_POST = "GET_POST"
 export const CREATE_POST = "CREATE_POST"
 export const UPDATE_POST = "UPDATE_POST"
@@ -10,6 +11,7 @@ export const UNLIKE_POST = "UNLIKE_POST"
 export const UNLIKE_POST_USER = "UNLIKE_POST_USER"
 export const DELETE_COMMENT_POST = "DELETE_COMMENT_POST"
 export const CREATE_COMMENT_POST = "CREATE_COMMENT_POST"
+export const GET_POST_PROFIL = "GET_POST_PROFIL"
 
 export const getPost = (nbr)=>{
     return (dispatch)=>{
@@ -120,3 +122,17 @@ export const getPost = (nbr)=>{
     }
   };
 
+  export const getPostProfil = ()=>{
+    return (dispatch)=>{
+      return axios
+      .get(`${process.env.REACT_APP_API_REQUEST}api/post`)
+      .then((responsePost)=>{
+        if(responsePost.data.errors){
+          console.log("erreur");
+        } else{
+         dispatch({type : GET_POST_PROFIL , payload : responsePost.data})
+        }
+      })
+      .catch((err)=>{   console.log(err) })
+    }
+  };

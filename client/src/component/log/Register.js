@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./log.css"
 
-const Register = ()=>{
+const Register = (props)=>{
 
     const [dataRegister, setDataRegister] = useState()
     const [afterSubmit, setAfterSubmit] = useState("Remplissez les champs obligatoires")
@@ -44,12 +44,13 @@ const Register = ()=>{
             errorEmail.innerHTML = ""
             errorPassword.innerHTML = ""
             setAfterSubmit("Profil bien enregister, veuillez-vous connectez")
+            props.putVerif(true)
         }
     }).catch(()=>{})
     }
     return (
-        <form onSubmit={handlePostDataSubmit}>
-            <h3>Inscrivez-vous en renseignant vos informations</h3>
+        <form className="form-log" onSubmit={handlePostDataSubmit}>
+            <h3>Renseignez vos informations</h3>
             <label  htmlFor="pseudo">Pseudo</label>
             <input onChange={handleSaveDataRegister} type="text" name="pseudo" className="pseudo"/>
             <p className="error-pseudo"></p>
@@ -61,7 +62,7 @@ const Register = ()=>{
             <p className="error-password"></p>
             <label htmlFor="bio">Bio</label>
             <input onChange={handleSaveDataRegister} type="text" name="bio" className="bio"/>
-            <p id={afterSubmit === "Profil bien enregister, veuillez-vous connectez" ? "after-submit" : "before-submit"}>{afterSubmit}</p>
+            <p id={afterSubmit === "Profil bien enregister" ? "after-submit" : "before-submit"}>{afterSubmit}</p>
             <button>Valider</button>
         </form>
     )

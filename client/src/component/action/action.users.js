@@ -7,6 +7,9 @@ export const UPLOADSET_PICS = "UPLOADSET_PICS"
 export const SET_BIO = "SET_BIO"
 export const FUNC_FOLLOW = "FUNC_FOLLOW"
 export const FUNC_FOLLOW_IDFOLLOW = "FUNC_FOLLOW_IDFOLLOW"
+export const FUNC_UNFOLLOW = "FUNC_UNFOLLOW"
+export const FUNC_UNFOLLOW_IDFOLLOW = "FUNC_UNFOLLOW_IDFOLLOW"
+
 
 
 export const getUser = (uid) => {
@@ -113,6 +116,19 @@ export const funcFollow = (id,data)=>{
     .then((res)=>{
       dispatch({type : FUNC_FOLLOW, payload : res.data})
       dispatch({type : FUNC_FOLLOW_IDFOLLOW , payload : {_id : id , data}})
+
+    })
+    .catch((err)=>{console.log(err)})
+  }
+}
+
+export const funcUnfollow = (id,data)=>{
+  return (dispatch)=>{
+    return axios
+    .patch(`${process.env.REACT_APP_API_REQUEST}api/user/unfollow/${id}`, data)
+    .then((res)=>{
+      dispatch({type : FUNC_UNFOLLOW, payload : res.data})
+      dispatch({type : FUNC_UNFOLLOW_IDFOLLOW , payload : {_id : id , data}})
 
     })
     .catch((err)=>{console.log(err)})

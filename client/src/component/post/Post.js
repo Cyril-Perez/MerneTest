@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { createCommentPost, deleteCommentPost, likePost , unLikePost } from "../action/action.post"
 import CommentPost from "./commentPost"
-import { funcFollow } from "../action/action.users"
+import { funcFollow, funcUnfollow } from "../action/action.users"
+import { dateNowConfig } from "../tips/function.utils"
 
 
 const AllPost = (props)=>{
@@ -36,13 +37,21 @@ const AllPost = (props)=>{
     const handleClickFollow = (id , data)=>{
         dispatch(funcFollow(id, {idToFollow : data}))
     }
+    const handleClickUnFollow = (id ,data)=>{
+        dispatch(funcUnfollow(id, {idToUnFollow : data}))
+    }
     
     return (
         <div className="one-post">
             <div className="container-img-profil-post">
                 <img className="post-pics-profil" src={props.srcPicsProfil.join("")}/>
                 <p>{props.posterID}</p>
-                {user.following && user.following.includes(props.posterData) ? <img onClick={()=>{handleClickFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-follow.svg`} className="img-follow-unfollow"/> : <img  onClick={()=>{handleClickFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-unfollow.svg`} className="img-follow-unfollow"/>}
+                {
+                    user._id === props.posterData ? "" 
+                   : user.following && user.following.includes(props.posterData) ? <img onClick={()=>{handleClickUnFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-follow.svg`} className="img-follow-unfollow"/> 
+                   : <img  onClick={()=>{handleClickFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-unfollow.svg`} className="img-follow-unfollow"/>
+                }
+               
             </div>        
             {
                 props.pics ? <img className="img-post"src={props.srcPics}/> : ""
@@ -53,17 +62,19 @@ const AllPost = (props)=>{
                 commentViews ? <div className="container-comments-post">{ props.arrayComments.length !== 0  ? props.arrayComments.map((element)=>{
                     return <CommentPost 
                     key={element._id}
+                    posterCommenter={element.commenterId}
                     posterCommentId={ allUsers.map((item)=>{ 
                         if(item._id === element.commenterId){
                         return item.picture
-                        
                     }})}
                     posterPseudo={element.commenterPseudo}
+                    
                     deleteCommentPost={ user._id === props.posterData ? <img onClick={()=>{handleDeleteCommentPost(props.onePost, element._id)}} className="delete-img-comment" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`} /> 
                     : user._id === element.commenterId ? <img onClick={()=>{handleDeleteCommentPost(props.onePost, element._id)}} className="delete-img-comment" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`}/> : "" }
                     commentMessage={element.text}
+                    dateCreated={dateNowConfig(element.timestamp)}
                     />
-                }) : <p className="array-is-empty">Aucun commentaire</p> }</div> : ""
+                }) : <p className="array-is-empty">Aucun commentaire</p> }</div> : ""      
             }
             <form onSubmit={(e)=>{handleSubmitCreatePost(e,props.onePost,{commenterId : user._id , commenterPseudo : user.pseudo , text : txtComment})}} className="form-create-comment">
                 <input onChange={(e)=>{setTxtComment(e.target.value)}} type="text" placeholder="écrire votre commentaire" className="input-txt-comment" />
@@ -78,7 +89,7 @@ const AllPost = (props)=>{
                 }
             </div>
             {
-                user._id ? <p>{props.modif}</p> : ""
+                user._id ? <>{props.modif}</> : ""
             }
             
             {

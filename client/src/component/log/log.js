@@ -7,7 +7,7 @@ import {  useSelector } from "react-redux"
 
 // import { loading } from "../tips/function.utils"
 import "./log.css"
-const Log = (props)=>{
+const Log = ()=>{
     // const [load , setLoad] = useState(true)
     const [check , setCheck] = useState(false)
     const allPost = useSelector(state => state.postReducer)
@@ -35,12 +35,12 @@ const Log = (props)=>{
         { allPost[0] ? 
             <div className="container-form">               
                     <div className="container-choice">
-                        <h2 onClick={handleClickChoice} id="login-choice">Connexion</h2>
-                        <h2 onClick={handleClickChoice} id="register-choice">Inscription</h2>
+                        <h2 onClick={handleClickChoice} id={check ? "login-choice-active-login" : "login-choice" }>Connexion</h2>
+                        <h2 onClick={handleClickChoice} id={check ? "register-choice" : "register-choice-active-register"}>Inscription</h2>
                     </div>
-                     {check ? <Login/> : <Register/>}    
+                     {check ? <Login/> : <Register putVerif={setCheck}/>}    
             </div>
-            : <div class="loading">Loading&#8230;</div> 
+            : <div className="loading">Loading&#8230;</div> 
         } 
          </>
     )

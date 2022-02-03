@@ -1,6 +1,6 @@
 import "./navbar.css"
 import { AppContext } from "../../AppContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie'
 
@@ -9,6 +9,11 @@ const Navbar = ()=>{
 
     const context = useContext(AppContext)
 
+    const [valid, setValid] = useState(false)
+
+    const handleChangeValid = ()=>{
+        setValid(!valid)
+    }
     const handleDisconnect =  async ()=>{
        
           await fetch(`${process.env.REACT_APP_API_REQUEST}api/user/logout`,
@@ -29,10 +34,11 @@ const Navbar = ()=>{
     }
     
     return (
-        <nav className="nav">         
+        <nav className={`navigation ${valid ? "active" : "no-active"}`}>         
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
-                { context.uId ? <p onClick={handleDisconnect} style={{cursor : "pointer"}}>✖️</p> : <Link style={{textDecoration: "none" , color : "black" , fontSize: "0.8rem"}} to="/"><p>Connexion</p></Link>}
+                { context.uId ? <img src={`${process.env.PUBLIC_URL}/images/img-g/logout.svg`} alt="icon-logout" onClick={handleDisconnect} className="img-logout"/> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Connexion</p></Link>}
+                <img onClick={handleChangeValid} src={`${process.env.PUBLIC_URL}/images/img-g/burger-button.svg`} alt="icon-menu" className="burger-button"/>
         </nav>
     )
 }

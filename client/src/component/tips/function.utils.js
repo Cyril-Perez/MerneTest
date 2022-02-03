@@ -24,3 +24,19 @@ export const configDate = (nbr) => {
       (typeof value === "string" && value.trim().length === 0)
     );
   };
+
+  export const dateNowConfig = (nbr) => {
+    let options = {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+  
+    let newDate = new Date(nbr).toLocaleDateString("fr-FR", options);
+  
+    return newDate.toString();
+  }

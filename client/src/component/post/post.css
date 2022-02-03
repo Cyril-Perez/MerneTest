@@ -9,7 +9,9 @@
     transition: 0.4s ease-in-out;
     margin: 50px auto;
     padding: 25px;
+    z-index: 1;
 }
+
 .one-post p {
     font-weight: 700;
  
@@ -106,6 +108,7 @@
 /*texte message comment post*/
 .txt-comment-post{
     margin-top: 10px;
+    margin-left: 10px;
     width: 75%;
 }
 
@@ -139,6 +142,9 @@
     margin: 0px;
     cursor: pointer;
 }
+.date-comment-created{
+    margin-top: 15PX;
+}
 
 /*section follow unfollow*/
 .img-follow-unfollow{
@@ -147,4 +153,22 @@
     margin-left: 10px;
     cursor: pointer;
     
+}
+
+/*responsive chaque post*/
+@media screen and (max-width:800px) {
+    
+    /*container post*/
+    .container-post {
+        margin: 10px 0px 0px 0px;
+    }
+    .one-post{
+       width: 100%;
+       margin: 50px 0px 50px 0px;
+    }
+    .img-post{
+        width: 100%;
+    }
+    
+    /*son contenu*/
 }

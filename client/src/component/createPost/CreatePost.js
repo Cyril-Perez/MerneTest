@@ -15,10 +15,7 @@ const CreatePost = (props)=>{
 
         const handleSubmitCreatePost = (e) => {
             e.preventDefault()
-            const active = document.querySelector("#textarea-message-post")
-            
-                
-            
+
             if (filePost) {
                 const data = new FormData();
                 // let fileField = document.querySelector("input[type='file']");
@@ -54,7 +51,7 @@ const CreatePost = (props)=>{
 
         return (
             <form className="form-create-post" onSubmit={handleSubmitCreatePost}> 
-                <h3 className="title-create-post" id={props.verif}>Crée votre post</h3>
+                <h3 className="title-create-post">Crée votre post</h3>
                 <label htmlFor="textarea-message-post" id="txt-message-post-label">Message</label>
                 <textarea onChange={(e)=>{setDescription(e.target.value)}} id="textarea-message-post" maxLength="400" placeholder="entrez votre message" ></textarea>
                 <label htmlFor="file-post" id="change-file-post">Selectionner un fichier</label>

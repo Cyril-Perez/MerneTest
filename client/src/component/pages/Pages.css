@@ -4,6 +4,8 @@ header{
     font-family: sans-serif;
     
 }
+
+
 .date-config{
     font-weight: 700;
     padding: 5px 0px 15px 0px;
@@ -24,6 +26,15 @@ header{
     transition: 0.4s ease-in-out;
     padding: 20px;
 }
+/*responsive content upload image profil*/
+@media screen and (max-width : 900px) {
+    .content-profil{
+     width: 100%;
+     min-width: 0px;
+     margin: 0px;
+    }   
+
+}
 .content-profil:hover{
     box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
     -webkit-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
@@ -40,6 +51,28 @@ header{
     box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
     -webkit-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
     -moz-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
+}
+.form-change-pics{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+@media screen and (max-width : 700px) {
+    .content-profil .picture-profil-edit{
+     width: 200px;
+     height: 200px;
+    }   
+    .content-profil form{
+        width: 100%;
+        min-width: 0px;
+    }
+    .content-profil{
+        height: auto;
+    }
+    .content-profil .form-change-pics label {
+        width: 200px;
+    }
+
 }
 .content-profil input {
     margin: auto;
@@ -80,6 +113,7 @@ header{
     justify-content: space-around;
     width: 100%;
 }
+
 .content-abonnement p {
     font-weight: 700;
 
@@ -95,7 +129,7 @@ header{
 .content-views-followers{
     position: absolute;
     top: 50px;
-    left: 200px;
+    left: 12%;
     width: 200px;
 }
 .content-views-followers p {
@@ -110,19 +144,22 @@ header{
     padding: 5px;
     display: flex;
     align-items: center;
-    text-overflow: ellipsis;
+    
 }
 .content-views-followers span{
     padding-left:  20px;
     letter-spacing: 1px;
     font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /*following*/
 .content-views-followings{
     position: absolute;
     top: 50px;
-    right: 200px;
+    right: 12%;
     width: 200px;
 }
 .content-views-followings p {
@@ -137,15 +174,57 @@ header{
     padding: 5px;
     display: flex;
     align-items: center;
-    text-overflow: ellipsis;
+
 }
 .content-views-followings span{
     padding-left:  20px;
     letter-spacing: 1px;
     font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
+/* responsive views followers followings*/
+@media screen and (max-width : 1740px) {
+    .content-views-followings{
+        right: 24%;
+        top: 55px;
+    }
+    .content-views-followers{
+        left: 24%;
+        top: 55px;
+    }
+}
+@media screen and (max-width : 1200px) {
+    .content-views-followings{
+        right: 13%;
+        top: 55px;
+    }
+    .content-views-followers{
+        left: 13%;
+        top: 55px;
+    }
+}
+@media screen and (max-width : 900px) {
     
+    .content-views-followings{
+        width: 100px;
+    }
+    .content-views-followers{
+        width: 100px;
+    }
+}
+@media screen and (max-width : 570px) {
+    
+    .content-views-followings{
+        display: none;
+    }
+    .content-views-followers{
+        display: none;
+    }
+}
+
 
 
 /*profil.js BIO*/
@@ -154,7 +233,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
- 
+
     max-width: 900px;
     margin: 50px  auto;
     color: black;
@@ -164,6 +243,13 @@ header{
     -moz-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
     transition: 0.4s ease-in-out;
     padding: 20px;
+}
+@media screen and (max-width : 900px) {
+    .content-bio{
+     width: 100%;
+     margin: 0px;
+    }   
+
 }
 .content-bio:hover{
     box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
@@ -182,6 +268,16 @@ header{
     resize: none;
     background-color:  transparent;
     text-align: center;
+}
+@media screen and (max-width : 700px) {
+    .content-bio{
+        height: auto;
+    }
+    .content-bio textarea{
+     width: 295px;
+     
+    }   
+
 }
 #textarea-bio{
     background-color: whitesmoke;
@@ -242,6 +338,15 @@ header{
     width: 800px;
     margin: 50px auto;
 }
+@media screen and (max-width : 800px) {
+    .container-create-post{
+            width: 100%;
+            margin: 50px 0px 50px 0px;       
+    }
+    .link-create-post{
+        margin-left: 5px;
+    }
+}
 .link-create-post{
     font-size: 1.8rem;
     background-color: rgb(206, 197, 197) ;
@@ -251,4 +356,10 @@ header{
     border-radius: 30px;
     border: 4px solid black;
     cursor: pointer;
+}
+
+/*mes posts profil*/
+.date-profil{
+    margin : 7px 0px 7px 0px;
+    text-align: end;
 }

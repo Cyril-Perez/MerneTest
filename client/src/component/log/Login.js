@@ -55,8 +55,8 @@ const Login = ()=>{
     //     console.log(test);
     // },[test])
     return (
-        <form onSubmit={handleSubmitLogin}>
-            <h3>Connectez-vous en renseignant vos informations</h3>
+        <form className="form-log" onSubmit={handleSubmitLogin}>
+            <h3>Renseignez vos informations</h3>
             <label htmlFor="email">Email</label>
             <input onChange={handleSaveData} type="text" name="email" className="email-login"/>
             <label htmlFor="password">Mot de passe</label>

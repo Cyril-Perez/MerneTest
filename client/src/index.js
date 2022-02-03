@@ -7,7 +7,9 @@ import {BrowserRouter as Router} from "react-router-dom"
 import {Provider,} from "react-redux"
 import store from "./store"
 import { getAllUsers } from './component/action/action.users';
-store.dispatch(getAllUsers())
+
+// store.dispatch(getAllUsers())
+
 ReactDOM.render(
   <Provider store ={store}>
     <Router>

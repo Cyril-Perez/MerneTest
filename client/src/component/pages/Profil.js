@@ -2,19 +2,25 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { uploadPics, uploadSetPics, majBio } from "../action/action.users"
+import CommentPost from "../post/commentPost"
 import { configDate } from "../tips/function.utils"
 import "./Pages.css"
+
+
 const Profil = () => {
     const params = useParams()
     const state = useSelector(state => state.fetchReducer)
     const allUsers = useSelector(users => users.AllUsers)
+    const allPosts = useSelector(post => post.allPostsReducer)
 
     const [verifFollow, setVerifFollow] = useState(null)
+    const [viewsComments , setViewsComments] = useState(false)
     // const [filterState, setFilterState] = useState([{_id : "test", picture : "./test" , pseudo : "idee"}])
     // const [validFilter , setValidFilter] = useState(false)
     // if(filterState){
     //     setValidFilter(true)
     // }
+
     
 
     const dispatch = useDispatch()
@@ -82,6 +88,7 @@ const Profil = () => {
         console.log(verifFollow)
     }
 
+
     return (
         <>
             <header className="profil-header">
@@ -102,7 +109,7 @@ const Profil = () => {
 
                                 </div>
                                 <img className="picture-profil-edit" src={state.picture} alt="picture-profil" />
-                                <form action="" onSubmit={handleChangePics}>
+                                <form className="form-change-pics" onSubmit={handleChangePics}>
                                     <label htmlFor="file" className="change-pics">Changer l'image</label>
                                     <input onChange={handleSaveFile} type="file" id="file" name="file" accept=".jpg , .jpeg , .png" />
                                     <p id="error-file">{file ? file.name : "Selectionner un fichier" + sendfile}</p>
@@ -160,17 +167,59 @@ const Profil = () => {
             {
                 state._id ?  
                 <section>
-                <div className="content-bio">
-                    <h2>Bio</h2>
-                    <textarea id={verifiyBio ? "textarea-bio" : ""} onChange={handleSaveDataBio} spellcheck="false" type="text" maxLength="400" defaultValue={state.bio}></textarea>
-                    <p className="valid-bio">{sendBio}</p>
-                    {verifiyBio ? <button onClick={handleClickSetBio} className="send-button-bio">Valider les changements</button>
-                        : <button onClick={() => { setVerifyBio(true) }} className="send-button-bio">Modifier la bio</button>}
-                </div>
-            </section>
+                    <div className="content-bio">
+                        <h2>Bio</h2>
+                        <textarea id={verifiyBio ? "textarea-bio" : ""} onChange={handleSaveDataBio} spellCheck="false" type="text" maxLength="400" defaultValue={state.bio}></textarea>
+                        <p className="valid-bio">{sendBio}</p>
+                        {verifiyBio ? <button onClick={handleClickSetBio} className="send-button-bio">Valider les changements</button>
+                            : <button onClick={() => { setVerifyBio(true) }} className="send-button-bio">Modifier la bio</button>}
+                    </div>
+                </section>
             : ""
+
             }
-            
+            {
+                state._id ? 
+                <section>
+                        <div className="container-post-id">
+                            {
+                                allPosts.map((item)=>{
+                                        if(item.posterId === state._id) {
+                                            return (
+                                                <div className="one-post" key={item._id}>
+                                                    <div className="container-img-profil-post">
+                                                        <img src={state.picture} className="post-pics-profil" alt="images profil"/>
+                                                        <p>{state.pseudo}</p>
+                                                    </div>
+                                                    {
+                                                        item.picture ? <img className="img-post"src={item.picture}/> : ""
+                                                    }
+                                                    <p>{item.message}</p>
+                                                    <p className="date-profil">{configDate(item.createdAt)}</p>
+                                                    <img onClick={()=>{setViewsComments(!viewsComments)}} className="icon-comment-views" src={`${process.env.PUBLIC_URL}/images/img-g/iconComments.svg`}/>
+                                                    {
+                                                        viewsComments ? <div>{ item.comments.length !== 0 ? item.comments.map((element)=>{
+                                                                        return <CommentPost
+                                                                            key={element._id}
+                                                                            posterPseudo={element.commenterPseudo}
+                                                                            posterCommentId={allUsers.map((data)=>{ 
+                                                                                if(data._id === element.commenterId){
+                                                                                return data.picture  
+                                                                            }})}
+                                                                            posterCommenter={element.commenterId}
+                                                                            commentMessage={element.text}
+                                                                        />
+                                                        }) : <p>Aucun commentaire</p>}</div>: ""
+                                                    }
+                                                </div>
+                                            )
+                                        }
+                                })
+                            }
+                        </div>
+                </section>
+                : ""
+            }
             </>
         </>
     )

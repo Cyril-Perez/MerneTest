@@ -10,7 +10,7 @@ import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllUsers, getUser } from "./component/action/action.users";
-import { getPost } from "./component/action/action.post";
+import { getPost, getPostProfil } from "./component/action/action.post";
 import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.profil";
 
 
@@ -23,6 +23,7 @@ function App() {
   useEffect(async()=>{
     dispatch(getAllUsers())
     dispatch(getPost(3))
+    dispatch(getPostProfil())
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
