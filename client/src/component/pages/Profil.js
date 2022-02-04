@@ -1,14 +1,15 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router"
 import { uploadPics, uploadSetPics, majBio } from "../action/action.users"
 import CommentPost from "../post/commentPost"
-import { configDate } from "../tips/function.utils"
+import { configDate, dateNowConfig } from "../tips/function.utils"
+import { likePost, unLikePost , createCommentPost } from "../action/action.post"
 import "./Pages.css"
 
 
 const Profil = () => {
-    const params = useParams()
+
     const state = useSelector(state => state.fetchReducer)
     const allUsers = useSelector(users => users.AllUsers)
     const allPosts = useSelector(post => post.allPostsReducer)
@@ -21,6 +22,8 @@ const Profil = () => {
     //     setValidFilter(true)
     // }
 
+    // texte message comment 
+    const [messageCommentProfil, setmessageCommentProfil] = useState()
     
 
     const dispatch = useDispatch()
@@ -79,6 +82,7 @@ const Profil = () => {
 
     }
 
+    //click views followers following
     const handleClickFollow = (e)=>{
         if(e.target.id === "followers-views"){
             setVerifFollow(false)
@@ -88,6 +92,20 @@ const Profil = () => {
         console.log(verifFollow)
     }
 
+    //click like post img
+    const handleClickLikeProfil = (id, userId)=>{
+        dispatch(likePost(id , {id : userId}))
+    }
+    //click unlike post img
+    const handleClickUnlikeProfil = (id, userId)=>{
+        dispatch(unLikePost(id , {id : userId}))
+    }
+
+    // create comment 
+    const handleSubmitCreateCommentProfil = (e,id, data )=>{
+        e.preventDefault()
+        dispatch(createCommentPost(id, data))
+    }
 
     return (
         <>
@@ -191,11 +209,12 @@ const Profil = () => {
                                                         <img src={state.picture} className="post-pics-profil" alt="images profil"/>
                                                         <p>{state.pseudo}</p>
                                                     </div>
+                                                    <Link to={`/profil/views/post/${item._id}`}><img className="icon-edit-post-user" src={`${process.env.PUBLIC_URL}/images/img-g/edit-set.svg`} alt="icon-edit-post" /></Link>
                                                     {
                                                         item.picture ? <img className="img-post"src={item.picture}/> : ""
                                                     }
-                                                    <p>{item.message}</p>
-                                                    <p className="date-profil">{configDate(item.createdAt)}</p>
+                                                    <p className="text-message-user">{item.message}</p>
+                                                    
                                                     <img onClick={()=>{setViewsComments(!viewsComments)}} className="icon-comment-views" src={`${process.env.PUBLIC_URL}/images/img-g/iconComments.svg`}/>
                                                     {
                                                         viewsComments ? <div>{ item.comments.length !== 0 ? item.comments.map((element)=>{
@@ -208,9 +227,23 @@ const Profil = () => {
                                                                             }})}
                                                                             posterCommenter={element.commenterId}
                                                                             commentMessage={element.text}
+                                                                            dateCreated={dateNowConfig(element.timestamp)}
+                                                                            
                                                                         />
                                                         }) : <p>Aucun commentaire</p>}</div>: ""
                                                     }
+                                                    <form onSubmit={(e)=>{handleSubmitCreateCommentProfil(e,item._id,{commenterId : state._id , commenterPseudo : state.pseudo , text : messageCommentProfil})}} className="form-create-comment">
+                                                        <input onChange={(e)=>{setmessageCommentProfil(e.target.value)}} type="text" placeholder="écrire votre commentaire" className="input-txt-comment" />
+                                                        <button className="button-create-comment">envoyer</button>
+                                                    </form>
+                                                    <p className="date-profil">{configDate(item.createdAt)}</p>
+                                                    <div className="container-heart">
+                                                        <p>{item.likers.length}</p>
+                                                        {
+                                                            item.likers.includes(state._id) ? <img onClick={()=>{handleClickUnlikeProfil(item._id, state._id)}} className="img-like-unlike" src={`${process.env.PUBLIC_URL}/images/img-g/like.svg`} alt="image-likes" /> : 
+                                                            <img onClick={()=>{handleClickLikeProfil(item._id, state._id)}} className="img-like-unlike" src={`${process.env.PUBLIC_URL}/images/img-g/unLike.svg`} alt="image-unlike"/>
+                                                        }
+                                                    </div>
                                                 </div>
                                             )
                                         }

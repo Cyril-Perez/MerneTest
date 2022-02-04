@@ -1,4 +1,5 @@
 export const configDate = (nbr) => {
+    let newArrayDate = []
     let config = {
       hour: "2-digit",
       minute: "2-digit",
@@ -8,12 +9,19 @@ export const configDate = (nbr) => {
       month: "short",
       day: "numeric",
     };
-  
+    
     let temps = Date.parse(nbr);
     // console.log(temps);
-    let date = new Date(temps).toLocaleDateString("fr-CA", config)
-    // console.log(date);
-    return date.toString();
+    let date = new Date(temps).toLocaleDateString("fr-FR", config)
+    date.toString();
+    let setDate = date.split(",")[1].split(":")
+    newArrayDate.unshift(" " + setDate[0]+"h")
+    newArrayDate.push(setDate[1]+"min")
+
+    let resultDate = newArrayDate.join(" : ")
+    let result = [date.split(",")[0], resultDate].join(",")
+
+    return result
   };
 
   export const loading = (value) => {

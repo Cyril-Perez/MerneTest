@@ -96,9 +96,11 @@ const Home = ()=>{
                         date={`Crée le ${configDate(item.createdAt)}`}
                         modif={item.posterId === context.uId ? 
                             <form onSubmit={(e)=>handleUpdatePost(item._id,e)} className="update-post-txt">
-                                <label>Changer le texte de ma publication</label>
-                                <input onChange={(e)=>{ setData(e.target.value)}} id={item.posterId} type="text" defaultValue={item.message}/>
-                                <button>Valider</button>
+                                <label className="label-form-update-form">Changer le texte de ma publication</label>
+                                <div>
+                                    <input className="input-form-update-post" onChange={(e)=>{ setData(e.target.value)}} id={item.posterId} type="text" defaultValue={item.message}/>
+                                    <button>Valider</button>
+                                </div>
                             </form>
                             : ""}
                         delete={item.posterId === context.uId ? <img onClick={()=>{handleDeletePost(item._id)}} className="img-delete" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`} alt="icon-delete-post"/> 

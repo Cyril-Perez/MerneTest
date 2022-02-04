@@ -29,7 +29,7 @@ const AllPost = (props)=>{
         dispatch(deleteCommentPost(id , {commentId : data}))
     }
 
-    const handleSubmitCreatePost = (e,id, data )=>{
+    const handleSubmitCreateComment = (e,id, data )=>{
         e.preventDefault()
         dispatch(createCommentPost(id, data))
     }
@@ -76,7 +76,7 @@ const AllPost = (props)=>{
                     />
                 }) : <p className="array-is-empty">Aucun commentaire</p> }</div> : ""      
             }
-            <form onSubmit={(e)=>{handleSubmitCreatePost(e,props.onePost,{commenterId : user._id , commenterPseudo : user.pseudo , text : txtComment})}} className="form-create-comment">
+            <form onSubmit={(e)=>{handleSubmitCreateComment(e,props.onePost,{commenterId : user._id , commenterPseudo : user.pseudo , text : txtComment})}} className="form-create-comment">
                 <input onChange={(e)=>{setTxtComment(e.target.value)}} type="text" placeholder="écrire votre commentaire" className="input-txt-comment" />
                 <button className="button-create-comment">envoyer</button>
             </form>

@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import { getAllUsers, getUser } from "./component/action/action.users";
 import { getPost, getPostProfil } from "./component/action/action.post";
 import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.profil";
+import ViewsPost from "./component/pages/viewsPost/ViewsPost";
+
 
 
 function App() {
@@ -47,6 +49,8 @@ function App() {
           <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/profil/:id" element={ acces ? <Profil/> : <ErrorLogProfil/>}/>
+              <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
+
           </Routes>
     </AppContext.Provider>
   );

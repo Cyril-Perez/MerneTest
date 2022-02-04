@@ -186,37 +186,7 @@ header{
 }
 
 /* responsive views followers followings*/
-@media screen and (max-width : 1740px) {
-    .content-views-followings{
-        right: 24%;
-        top: 55px;
-    }
-    .content-views-followers{
-        left: 24%;
-        top: 55px;
-    }
-}
-@media screen and (max-width : 1200px) {
-    .content-views-followings{
-        right: 13%;
-        top: 55px;
-    }
-    .content-views-followers{
-        left: 13%;
-        top: 55px;
-    }
-}
-@media screen and (max-width : 900px) {
-    
-    .content-views-followings{
-        width: 100px;
-    }
-    .content-views-followers{
-        width: 100px;
-    }
-}
-@media screen and (max-width : 570px) {
-    
+@media screen and (max-width : 1900px) {
     .content-views-followings{
         display: none;
     }
@@ -224,6 +194,7 @@ header{
         display: none;
     }
 }
+
 
 
 
@@ -313,12 +284,32 @@ header{
     width:  100% ;
     margin: 10px auto;
 }
-/*form update bio*/
+.text-message-user{
+    margin-top: 10px;
+}
+/*form update bio post*/
+.update-post-txt{
+    margin-top: 10px;
+}
+
 .update-post-txt button {
     background-color: black;
     width: 150px;
     color: white;
 }
+
+.input-form-update-post{
+    width: 70%;
+}
+.label-form-update-form{
+    margin: 10px 0px 10px 0px;
+}
+@media screen and (max-width : 665px) {
+    .input-form-update-post{
+        width: 90%;
+    }
+}
+
 /*delete post */
 .img-delete{
     cursor: pointer;
@@ -358,8 +349,41 @@ header{
     cursor: pointer;
 }
 
-/*mes posts profil*/
+/*mes posts profil.js*/
 .date-profil{
     margin : 7px 0px 7px 0px;
     text-align: end;
+}
+.icon-edit-post-user{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+@media screen and (max-width : 400px) {
+    .date-profil {
+        text-align: start;
+    }
+}
+
+/*ViewsPost.js*/
+.title-views-post{
+    text-align: center;
+    margin-top: 25px;
+}
+@media screen and (max-width : 450px) {
+    .title-views-post{
+        text-align: start;
+        margin-left: 30px;
+        
+    }
+}
+@media screen and (max-width : 355px) {
+    .title-views-post{
+        text-align: start;
+        margin-left: 10px;
+        font-size: 1.4rem;
+    }
 }
