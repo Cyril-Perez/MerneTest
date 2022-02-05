@@ -1,4 +1,4 @@
-/*AllPost.js */
+/*Post.js */
 .one-post{
     width:  800px ;
     position: relative;
@@ -12,10 +12,21 @@
     z-index: 1;
 }
 
+
 .one-post p {
     font-weight: 700;
  
 }
+/*link vers viewsProfil.js */
+.posterId-link-post{
+    color: black;
+    text-decoration: underline;
+ }
+ .posterId-link-commentPost{
+    color: black;
+    text-decoration: underline;
+ }
+ 
 .one-post:hover{
     box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
     -webkit-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);

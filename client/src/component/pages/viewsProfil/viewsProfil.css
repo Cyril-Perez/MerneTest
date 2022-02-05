@@ -1,0 +1,74 @@
+/*content pseudo + img Like unlike*/
+.content-profil-like-unlike{
+    display: flex;
+    align-items: center;
+}
+#content-views-profil{
+    padding-top: 25px;
+}
+/* img like unLike*/
+
+.img-follow-views-profil{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+.img-unfollow-views-profil{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+/*bio*/
+.content-bio-views {
+    margin: 50px 0px 50px 0px;
+}
+.content-bio-views p{
+    font-weight: 700;
+}
+
+/*active post sur one-post pages.css*/
+
+.container-post-views{
+    width: 100%;
+    max-width: 2500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.one-post-views{
+    width:  800px ;
+    position: relative;
+    background-color: rgb(206, 197, 197);
+    box-shadow: 0px 1px 0px 10px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    transition: 0.4s ease-in-out;
+    margin: 50px;
+    padding: 25px;
+    z-index: 1;
+    font-weight: 700;
+}
+.one-post-views:hover{
+    box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 0px 5px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 0px  5px rgba(0,0,0,1)
+}
+@media screen and (max-width : 800px) {
+    .one-post-views{
+        margin: 50px 0px 50px 0px;
+    }
+    
+}
+@media screen and (max-width: 1100px) {
+    #content-views-profil{
+        padding-top: 50px;
+    }
+}
+@media screen and (max-width: 390px) {
+    #content-views-profil{
+        padding-top: 40px;
+    }
+}

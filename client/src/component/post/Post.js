@@ -1,10 +1,12 @@
 import "./post.css"
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { createCommentPost, deleteCommentPost, likePost , unLikePost } from "../action/action.post"
 import CommentPost from "./commentPost"
 import { funcFollow, funcUnfollow } from "../action/action.users"
 import { dateNowConfig } from "../tips/function.utils"
+
 
 
 const AllPost = (props)=>{
@@ -45,7 +47,7 @@ const AllPost = (props)=>{
         <div className="one-post">
             <div className="container-img-profil-post">
                 <img className="post-pics-profil" src={props.srcPicsProfil.join("")}/>
-                <p>{props.posterID}</p>
+                <Link style={{textDecoration : "none"}} to={`/profil/views/profil/${props.posterData}`}><p className="posterId-link-post">{props.posterID}</p></Link>
                 {
                     user._id === props.posterData ? "" 
                    : user.following && user.following.includes(props.posterData) ? <img onClick={()=>{handleClickUnFollow(user._id , props.posterData)}} src={`${process.env.PUBLIC_URL}/images/img-g/icon-follow.svg`} className="img-follow-unfollow"/> 
