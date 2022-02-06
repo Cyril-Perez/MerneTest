@@ -33,7 +33,8 @@ const Home = ()=>{
     }
 
     //Scroll infinie
-    useEffect(()=>{  
+    useEffect(()=>{ 
+        // document.querySelector(".container-post").scrollIntoView({behavior: "smooth"}) 
         if(load){
             dispatch(getPost(nbrPost))
             setLoad(false)

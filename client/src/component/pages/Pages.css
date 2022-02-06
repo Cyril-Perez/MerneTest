@@ -4,6 +4,9 @@ header{
     font-family: sans-serif;
     
 }
+#profil-header{
+    padding-top: 10px;
+}
 
 
 .date-config{
@@ -130,6 +133,9 @@ header{
 
 .content-abonnement p {
     font-weight: 700;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
 
 }
 .img-follows{
@@ -304,6 +310,7 @@ header{
 .container-post{
     width:  100% ;
     margin: 10px auto;
+    padding-top: 15px;
 }
 .text-message-user{
     margin-top: 10px;

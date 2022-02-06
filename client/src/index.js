@@ -7,12 +7,14 @@ import {BrowserRouter as Router} from "react-router-dom"
 import {Provider,} from "react-redux"
 import store from "./store"
 import { getAllUsers } from './component/action/action.users';
+import ScrollToTop from './component/utils/ScrollToTop';
 
 // store.dispatch(getAllUsers())
 
 ReactDOM.render(
   <Provider store ={store}>
     <Router>
+      <ScrollToTop/>
         <App /> 
       </Router>
   </Provider>,

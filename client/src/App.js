@@ -14,6 +14,7 @@ import { getPost, getPostProfil } from "./component/action/action.post";
 import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.profil";
 import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
+import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
 
 
 
@@ -52,6 +53,8 @@ function App() {
               <Route path="/profil/:id" element={ acces ? <Profil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
+              <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
+
 
 
           </Routes>

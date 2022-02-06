@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { uploadPics, uploadSetPics, majBio } from "../action/action.users"
@@ -38,6 +38,10 @@ const Profil = () => {
     const [sendBio, setSendBio] = useState()
     const [verifiyBio, setVerifyBio] = useState(false)
 
+
+    // useEffect(()=>{
+    //     document.getElementById("profil-header").scrollIntoView()
+    // },[])
 
     //function submit Upload Image
     const handleChangePics = (e) => {
@@ -109,7 +113,7 @@ const Profil = () => {
 
     return (
         <>
-            <header className="profil-header">
+            <header id="profil-header">
                 {
                     state._id ? 
                         
@@ -119,10 +123,10 @@ const Profil = () => {
                                 <p className="date-config">{`Crée le : ${configDate(state.createdAt)}`}</p>
                                 <div className="content-abonnement">
                                     <div>
-                                        <p className="followers-views">Abonnés : {state.followers ? state.followers.length : ""}</p>
+                                        <Link style={{textDecoration : "none"}} to={`/profil/views/follow/${state._id}`}><p className="followers-views">Abonnés : {state.followers ? state.followers.length : ""}</p></Link>
                                     </div>
                                     <div>
-                                        <p>Abonnement : {state.following ? state.following.length : ""}</p>
+                                        <Link style={{textDecoration : "none"}} to={`/profil/views/follow/${state._id}`}><p>Abonnement : {state.following ? state.following.length : ""}</p></Link>
                                     </div>
 
                                 </div>
