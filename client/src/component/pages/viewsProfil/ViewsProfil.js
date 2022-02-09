@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { funcFollow, funcUnfollow } from "../../action/action.users"
 import { deleteCommentPost, createCommentPost, deletePost, majPost, likePost, unLikePost } from "../../action/action.post"
 import { configDate, dateNowConfig } from "../../tips/function.utils"
+import { Link } from "react-router-dom"
 import "../Pages.css"
 import "./viewsProfil.css"
 import { useEffect, useState } from "react"
@@ -87,14 +88,16 @@ const ViewsProfil = () => {
                                     <p className="date-config">{`Crée le : ${configDate(item.createdAt)}`}</p>
                                     <div className="content-abonnement">
                                         <div>
-                                            <p className="followers-views">Abonnés : {item.followers ? item.followers.length : ""}</p>
+                                            <Link style={{textDecoration : "none"}} to={`/profil/views/follow/${item._id}`}><p className="followers-views">Abonnés : {item.followers ? item.followers.length : ""}</p></Link>
                                         </div>
                                         <div>
-                                            <p>Abonnement : {item.following ? item.following.length : ""}</p>
+                                            <Link style={{textDecoration : "none"}} to={`/profil/views/follow/${item._id}`}><p className="followers-views">Abonnements : {item.followers ? item.following.length : ""}</p></Link>
                                         </div>
 
                                     </div>
-                                    <img className="picture-profil-edit" src={item.picture} alt="picture-profil" />
+                                    <div className="container-pics-profil">
+                                        <img className="picture-profil-edit" src={item.picture} alt="picture-profil" />
+                                    </div>
                                     <div className="content-bio-views">
                                         <p>{item.bio}</p>
                                     </div>

@@ -130,7 +130,9 @@ const Profil = () => {
                                     </div>
 
                                 </div>
-                                <img className="picture-profil-edit" src={state.picture} alt="picture-profil" />
+                                <div className="container-pics-profil">
+                                    <img className="picture-profil-edit" src={state.picture} alt="picture-profil" />
+                                </div>
                                 <form className="form-change-pics" onSubmit={handleChangePics}>
                                     <label htmlFor="file" className="change-pics">Changer l'image</label>
                                     <input onChange={handleSaveFile} type="file" id="file" name="file" accept=".jpg , .jpeg , .png" />

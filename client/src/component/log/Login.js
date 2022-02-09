@@ -40,8 +40,9 @@ const Login = ()=>{
            return res.json()
         })
         .then((response)=>{
-            if(response.erreur){
-               setDataErr(response.erreur) 
+            console.log(response)
+            if(response.message){
+               setDataErr(response.message) 
             } else{               
                 context.setuId(response.user)
                 context.setAcces(true)
@@ -61,7 +62,7 @@ const Login = ()=>{
             <input onChange={handleSaveData} type="text" name="email" className="email-login"/>
             <label htmlFor="password">Mot de passe</label>
             <input onChange={handleSaveData} type="text" name="password" className="mdp-login"/>
-            {<p>{dataErr}</p>}
+            <p>{dataErr}</p>
             <button>Valider</button>
         </form>
     )

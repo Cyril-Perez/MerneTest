@@ -12,11 +12,13 @@
     height: 25px;
     width: 25px;
     cursor: pointer;
+    margin-left: 10px;
 }
 .img-unfollow-views-profil{
     height: 25px;
     width: 25px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 /*bio*/
