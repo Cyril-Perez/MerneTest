@@ -69,6 +69,11 @@ const ViewsFollow = ()=>{
                                                                 <li className="li-user-views" key={element._id}>
                                                                     <img className="img-follows"  src={element.picture} alt="profil-pics" />
                                                                     <Link style={{textDecoration : "none"}} to={`/profil/views/profil/${element._id}`}><span>{element.pseudo}</span></Link>
+                                                                    {
+                                                                        state._id === element._id ? ""
+                                                                        : element.followers && element.followers.includes(state._id) ? <img onClick={() => { handleClickUnFollowViews(state._id, element._id) }} src={`${process.env.PUBLIC_URL}/images/img-g/icon-follow.svg`} className="img-follow-views-profil" />
+                                                                        : <img onClick={() => { handleClickFollowViews(state._id, element._id) }} src={`${process.env.PUBLIC_URL}/images/img-g/icon-unfollow.svg`} className="img-unfollow-views-profil" />
+                                                                    }
                                                                 </li>
                                                             )
                                                         }
@@ -81,7 +86,7 @@ const ViewsFollow = ()=>{
                             )
                         }
                     })
-                : <div><h1>NON NON NON</h1></div>
+                : <h1 style={{textAlign : "center"}}>NON NON NON</h1>
             }
         </section>
     )
