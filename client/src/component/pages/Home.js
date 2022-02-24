@@ -14,6 +14,9 @@ const Home = ()=>{
     const context = useContext(AppContext)
     const allUsers = useSelector(users => users.AllUsers)
     const allPost = useSelector(state => state.postReducer)
+    const user = useSelector(id => id.fetchReducer)
+    // const [load , setLoad ] = useState(false)
+
     //scroll 
     const [nbrPost , setNbrPost] = useState(3)
     const [load, setLoad] = useState(true)
@@ -31,6 +34,7 @@ const Home = ()=>{
         e.preventDefault()
        dispatch(majPost ( id, {message : data }))
     }
+   
 
     //Scroll infinie
     useEffect(()=>{ 
@@ -62,7 +66,7 @@ const Home = ()=>{
         {
             <header>
                 {          
-                context.uId ? <div className="container-post">
+                  context.uId  ? <div className="container-post">
                     <div className="container-create-post">
                     <p onClick={()=>{setCreatePost(!createPost)}} className="link-create-post">{createPost ? "+" : "-"}</p>
                     {

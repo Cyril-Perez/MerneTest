@@ -15,6 +15,7 @@ import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.p
 import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
+// import Message from "./component/pages/messagerie/Message";
 
 
 
@@ -31,10 +32,9 @@ function App() {
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
     }).then((response)=>{ 
-        setAcces(true)
         setuId(response)
         dispatch(getUser(response)) 
-         
+        setAcces(true)
     }).catch((err)=>{
       console.log(err);
     })
@@ -42,6 +42,7 @@ function App() {
   },[uId])
   const appContextValue = {
     uId,
+    acces,
     setuId,
     setAcces
   }
@@ -54,8 +55,7 @@ function App() {
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
-
-
+              {/* <Route path="/profil/messagerie/:id" element={ acces ? <Message/> : <ErrorLogProfil/>}/> */}
 
           </Routes>
     </AppContext.Provider>

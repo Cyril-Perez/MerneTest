@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState , useEffect } from "react"
 import Login from "./Login"
 import Register from "./Register"
 import { useContext } from "react"
@@ -8,13 +8,19 @@ import {  useSelector } from "react-redux"
 // import { loading } from "../tips/function.utils"
 import "./log.css"
 const Log = ()=>{
-    // const [load , setLoad] = useState(true)
+    const [load , setLoad] = useState(false)
     const [check , setCheck] = useState(false)
     const allPost = useSelector(state => state.postReducer)
+    const user = useSelector(id => id.fetchReducer)
     const context = useContext(AppContext)
-    // useEffect(() => {
-    //         !loading(context.uId) && setLoad(false);
-    // }, [context]);
+
+    useEffect(() => {
+            if(context.uId === null){
+                setLoad(true)
+            } else {
+                setLoad(false)
+            }
+    }, [context.uId]);
 
     const handleClickChoice = (e)=>{
         if (e.target.id === "login-choice") {
@@ -32,7 +38,7 @@ const Log = ()=>{
         //     <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         //     </div></div> : 
         <>
-        { allPost[0] ? 
+        { load && allPost[0]  ? 
             <div className="container-form">               
                     <div className="container-choice">
                         <h2 onClick={handleClickChoice} id={check ? "login-choice-active-login" : "login-choice" }>Connexion</h2>

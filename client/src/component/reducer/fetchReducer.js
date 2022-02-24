@@ -4,7 +4,7 @@ import { GET_USER, UPLOAD_PICS, UPLOADSET_PICS , SET_BIO, FUNC_FOLLOW, FUNC_UNFO
 const initalState = {
     _id : "",
     email : "",
-    pseudo : ""
+    pseudo : {}
 }
 
 export default function fetchReducer(state= initalState, action ) {

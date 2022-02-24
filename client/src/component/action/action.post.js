@@ -34,7 +34,6 @@ export const getPost = (nbr)=>{
 
   export const createPost = (data)=>{
     return (dispatch)=>{
-      console.log(data);
       return axios
       .post(`${process.env.REACT_APP_API_REQUEST}api/post` , data)
       .then((res)=>{
@@ -46,7 +45,6 @@ export const getPost = (nbr)=>{
 
   export const majPost = (id , data)=>{
     return (dispatch)=>{
-      console.log(id , data);
       return axios
       .put(`${process.env.REACT_APP_API_REQUEST}api/post/${id}` , data)
       .then((res)=>{

@@ -35,6 +35,7 @@ app.use(express.urlencoded({ extended: true })); //analyse de corp (rempalcement
 app.use(express.json()); //analyse de corp (rempalcement body-parser)
 app.use(cookieParser());
 
+
 //check jwt connexion
 app.get("*", authMidlewares.checkUser)
 
@@ -57,7 +58,6 @@ app.use("/public" ,express.static(path.join(__dirname, "images")));
 //routes
 app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes)
-
 
 
 app.listen(process.env.PORT, () => {
