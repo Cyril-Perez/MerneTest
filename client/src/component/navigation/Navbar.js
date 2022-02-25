@@ -42,7 +42,7 @@ const Navbar = ()=>{
         <nav className={`navigation ${valid ? "active" : "no-active"}`}>         
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
-                {/* <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/messagerie/${context.uId}` }}><p>Messagerie</p></Link> */}
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/messagerie/${context.uId}` }}><p>Messagerie</p></Link>
                 { context.uId ? <img src={`${process.env.PUBLIC_URL}/images/img-g/logout.svg`} alt="icon-logout" onClick={handleDisconnect} className="img-logout"/> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Connexion</p></Link>}
                 <img onClick={handleChangeValid} src={`${process.env.PUBLIC_URL}/images/img-g/burger-button.svg`} alt="icon-menu" className="burger-button"/>
         </nav>

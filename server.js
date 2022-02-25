@@ -1,7 +1,14 @@
+//requete http
 const express = require("express")
+const app = express();
+//server config
+const http = require("http")
+//BDD config
 require("dotenv").config({ path: "./config/.env" })
 require("./config/db.js")
-const app = express();
+//socket config
+const {Server} = require("socket.io")
+
 const path = require("path");
 const helmet = require("helmet");
 const cors = require("cors");
@@ -9,6 +16,12 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require("./routes/user.routes")
 const postRoutes = require("./routes/post.routes")
 const authMidlewares = require("./middleware/auth.middleware")
+
+// node a express
+const server = http.createServer(app)
+//connexion socket a notre serveur
+const io = new Server(server)
+
 
 
 //middlewares
@@ -60,7 +73,12 @@ app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes)
 
 
-app.listen(process.env.PORT, () => {
+io.on("connection", ()=>{
+  console.log("utilisateur connecter");
+})
+
+
+server.listen(process.env.PORT, () => {
     console.log(`Port ${process.env.PORT} connecté`);
 })
 

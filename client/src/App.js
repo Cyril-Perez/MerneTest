@@ -15,7 +15,7 @@ import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.p
 import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
-// import Message from "./component/pages/messagerie/Message";
+import Message from "./component/pages/messagerie/Message";
 
 
 
@@ -55,7 +55,7 @@ function App() {
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
-              {/* <Route path="/profil/messagerie/:id" element={ acces ? <Message/> : <ErrorLogProfil/>}/> */}
+              <Route path="/profil/messagerie/:id" element={ acces ? <Message/> : <ErrorLogProfil/>}/>
 
           </Routes>
     </AppContext.Provider>
