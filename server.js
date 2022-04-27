@@ -15,6 +15,8 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require("./routes/user.routes")
 const postRoutes = require("./routes/post.routes")
+const articlesRoutes = require("./routes/articles.route")
+
 const authMidlewares = require("./middleware/auth.middleware")
 
 // node a express
@@ -71,6 +73,7 @@ app.use("/public" ,express.static(path.join(__dirname, "images")));
 //routes
 app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes)
+app.use("/api/articles", articlesRoutes)
 
 
 io.on("connection", ()=>{

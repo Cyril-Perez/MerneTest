@@ -15,9 +15,13 @@ router.post("/test" , authControllers.test)
 router.get("/", userControllers.getAllUsers)
 router.get("/:id", userControllers.userInfo)
 router.put("/:id", userControllers.updateUser)
-router.delete("/:id", userControllers.deleteUser)
 router.patch("/follow/:id", userControllers.follow)
 router.patch("/unfollow/:id", userControllers.unfollow)
+
+//admin
+router.post("/admin/create-admin/:id", userControllers.createUserAdmin)
+router.delete("/admin/delete-admin/:id", userControllers.deleteUserAdmin)
+router.delete("/admin/:id", userControllers.deleteUser)
 
 //upload 
 router.post("/upload/add/:id",multer,uploadController.uploadProfilAdd)

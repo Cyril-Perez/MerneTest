@@ -78,6 +78,7 @@ const ViewsPost = ()=>{
                                                                         return <CommentPost
                                                                             key={element._id}
                                                                             posterPseudo={element.commenterPseudo}
+                                                                            //recherche photo du posterCommentId
                                                                             posterCommentId={allUsers.map((data)=>{ 
                                                                                 if(data._id === element.commenterId){
                                                                                 return data.picture  
@@ -85,6 +86,7 @@ const ViewsPost = ()=>{
                                                                             posterCommenter={element.commenterId}
                                                                             commentMessage={element.text}
                                                                             dateCreated={dateNowConfig(element.timestamp)}
+                                                                            //si la personne connectez a cliquez sur un post ou il a lui même commenter
                                                                             deleteCommentPost={
                                                                                 state._id === item.commenterId ? <img onClick={()=>{handleDeleteCommentPostViews(item._id, element._id)}} className="delete-img-comment" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`} /> 
                                                                                 : state._id === element.commenterId ? <img onClick={()=>{handleDeleteCommentPostViews(item._id, element._id)}} className="delete-img-comment" src={`${process.env.PUBLIC_URL}/images/img-g/dustbin.svg`}/> : "" }

@@ -1,0 +1,27 @@
+.header-error-log{
+    font-family: sans-serif;
+    margin-top: 50px;
+}
+.txt-error-log{
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 1.6rem;
+}
+
+.redirection-error-log{
+    width: 380px;
+    text-align: center;
+    margin: 25px auto;
+    padding: 20px;
+    background-color: rgba(38,23,88);
+    border-radius: 35px;
+}
+@media screen and (max-width : 441px) {
+    .redirection-error-log{
+        width: 250px;
+        font-size: 1.1rem;
+    }
+    
+}

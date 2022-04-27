@@ -63,7 +63,7 @@ const Register = (props)=>{
             <label htmlFor="bio">Bio</label>
             <input onChange={handleSaveDataRegister} type="text" name="bio" className="bio"/>
             <p id={afterSubmit === "Profil bien enregister" ? "after-submit" : "before-submit"}>{afterSubmit}</p>
-            <button>Valider</button>
+            <button className="valid-log">Valider</button>
         </form>
     )
 }

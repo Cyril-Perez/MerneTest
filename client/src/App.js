@@ -15,19 +15,22 @@ import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.p
 import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
-import Message from "./component/pages/messagerie/Message";
 
 
 
 function App() {
+  //gestion rendu conditionnel connexion
   const [uId , setuId] = useState(null)
   const [acces , setAcces] = useState(false)
 
   const dispatch = useDispatch()
   
   useEffect(async()=>{
+    //recuperation des utilisateur
     dispatch(getAllUsers())
+    //recuperation des 3 dernier posts pour le scroll
     dispatch(getPost(3))
+    //recuperation de l'essemble des posts
     dispatch(getPostProfil())
     await fetch(`${process.env.REACT_APP_API_REQUEST}jwtid`, {method: "GET" , credentials: "include"}).then((res)=>{
       return res.json()
@@ -55,8 +58,6 @@ function App() {
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
-              <Route path="/profil/messagerie/:id" element={ acces ? <Message/> : <ErrorLogProfil/>}/>
-
           </Routes>
     </AppContext.Provider>
   );

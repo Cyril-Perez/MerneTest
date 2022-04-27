@@ -8,12 +8,13 @@ import Cookies from 'js-cookie'
 const Navbar = ()=>{
 
     const context = useContext(AppContext)
-
     const [valid, setValid] = useState(false)
 
+    //burger button responsive rendu conditionnel 
     const handleChangeValid = ()=>{
         setValid(!valid)
     }
+    //function disconnect
     const handleDisconnect =  async ()=>{
        
           await fetch(`${process.env.REACT_APP_API_REQUEST}api/user/logout`,
@@ -25,26 +26,23 @@ const Navbar = ()=>{
                 'Content-Type': 'application/json'
               },
         }).then(()=>
-        Cookies.remove("jwt")
-        
-        )
-        
-        .catch((err)=>console.log(err))
-       
+        //utilisation de js cookie 
+        Cookies.remove("jwt")        
+        )        
+        .catch((err)=>console.log(err))      
         window.location = "/"
-        // console.log(doc)
-        
-        // Cookies.remove("jwt")
-        // window.location = "/"
     }
     
     return (
         <nav className={`navigation ${valid ? "active" : "no-active"}`}>         
+                <Link style={{textDecoration: "none" , color : "black"}} to="/"><img src={`${process.env.PUBLIC_URL}/images/img-g/lelephant.png`} alt="logo website" className="img-logo-navbar"/> </Link>
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualités` }}><p>Ele'News</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
-                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/messagerie/${context.uId}` }}><p>Messagerie</p></Link>
-                { context.uId ? <img src={`${process.env.PUBLIC_URL}/images/img-g/logout.svg`} alt="icon-logout" onClick={handleDisconnect} className="img-logout"/> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Connexion</p></Link>}
-                <img onClick={handleChangeValid} src={`${process.env.PUBLIC_URL}/images/img-g/burger-button.svg`} alt="icon-menu" className="burger-button"/>
+                <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Publications</p></Link>
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualités` }}><p>Actualités</p></Link>
+                { context.uId ? <img src={`${process.env.PUBLIC_URL}/images/img-g/exit.png`} alt="icon-logout" onClick={handleDisconnect} className="img-logout"/> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Connexion</p></Link>}
+                <img onClick={handleChangeValid} src={`${process.env.PUBLIC_URL}/images/img-g/menu.png`} alt="icon-menu" className="burger-button"/>
         </nav>
     )
 }

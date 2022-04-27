@@ -23,10 +23,10 @@
     flex-direction: column;
     padding: 25px;
     width: 800px;
-    background-color: rgb(206, 197, 197);
-    box-shadow: 0px 1px 0px 10px rgba(0,0,0,1);
-    -webkit-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
-    -moz-box-shadow: 0px 1px 0px 19px rgba(0,0,0,1);
+    background-color: rgb(176, 200, 209);
+    box-shadow: 0px 1px 0px 10px rgba(38,23,88);
+    -webkit-box-shadow: 0px 1px 0px 19px rgba(38,23,88);
+    -moz-box-shadow: 0px 1px 0px 19px rgba(38,23,88);
     transition: 0.4s ease-in-out;
 }
 /*responsive create post*/
@@ -44,7 +44,7 @@
 }
 #change-file-post{
     cursor: pointer;
-    background-color: black;
+    background-color: rgba(38,23,88);
     width: 250px;
     padding: 15px;
     border-radius: 25px;
@@ -53,13 +53,18 @@
     margin: 15px 0px 10px 0px;
 }
 #button-create-post{
-    box-shadow: 2px 2px 1px black;
-    background-color: black;
+    margin-top: 10px;
+    box-shadow: 2px 2px 1px rgba(38,23,88);
+    border-color: rgba(38,23,88);
+    background-color: rgba(38,23,88);
     color: white;
+    width: 150px;
+    height: 39px;
     transition: 0.3s ease-in-out;
 }
 #button-create-post:hover {
-    background-color: white;
+    background-color: rgb(176, 200, 209);
+    font-weight: 700;
     color: black;
     box-shadow: 2px 2px 2px black;
 
@@ -68,6 +73,7 @@
     
     padding: 10px 0px 7px 15px;
     color: black;
+    box-shadow: 2px 2px 1px rgba(38,23,88);
 }
 @media screen and (max-width : 465px) {
     #textarea-message-post{

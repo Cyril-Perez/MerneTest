@@ -63,7 +63,7 @@ const Login = ()=>{
             <label htmlFor="password">Mot de passe</label>
             <input onChange={handleSaveData} type="text" name="password" className="mdp-login"/>
             <p>{dataErr}</p>
-            <button>Valider</button>
+            <button className="valid-log">Valider</button>
         </form>
     )
 }

@@ -6,18 +6,20 @@
 .container-choice h2 {
   width: 150px;
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid rgba(38,23,88);
   text-align: center;
   padding: 5px;
+  color: black
 }
 
   #login-choice-active-login {
-  background-color: black;
-  color: white;
+  background-color: rgba(38,23,88);
+  color: whitesmoke;
+
   }
   #register-choice-active-register {
-    background-color: black;
-    color: white;
+    background-color: rgba(38,23,88);
+    color: whitesmoke;
     }
 
   @media screen and (max-width : 390px) {
@@ -33,8 +35,9 @@
 
 form h3 {
     color: black ;
-    box-shadow: 2px 2px 1px black;
-
+    box-shadow: 2px 2px 1px rgba(38,23,88);
+    padding: 5px;
+    margin-bottom: 8px;
 }
 .form-log{
     display: flex;
@@ -45,7 +48,7 @@ form h3 {
     padding: 10px;
     margin-top: 25px;
 }
-form input {
+form input { 
     padding: 10px;
     margin: 5px 0px 5px 0px;
 }
@@ -53,10 +56,11 @@ form label {
     font-weight: 700;
     padding: 10px 0px 10px 0px;
 }
-form button {
-    background-color: rgb(206, 197, 197);
+form button.valid-log {
+    background-color: rgba(38,23,88);
+    color: whitesmoke;
     border: transparent;
-    box-shadow: 2px 2px 1px black;
+    box-shadow: 2px 2px 1px rgba(38,23,88);
     font-weight: 700;
     width: 150px;
     margin-top: 20px;
