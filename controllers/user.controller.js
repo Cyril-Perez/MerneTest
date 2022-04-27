@@ -104,7 +104,7 @@ module.exports = {
   deleteUser: async (req, res) => {
     const admin = await UserModel.findOne({ _id: req.params.id })
     if (!admin && !admin.role)
-      return res.status(400).send("ID unknown : " + req.params.id);
+      return res.status(400).send("Non autorisé");
     try {
       await UserModel.deleteOne({ _id: req.params.id })
       return res.status(200).json({ message: "utlisateur bien supprimer" })
@@ -118,7 +118,7 @@ module.exports = {
     const {pseudo,email,password,role} = req.body
     const admin = await UserModel.findOne({ _id: req.params.id })
     if (!admin && admin.role === "admin")
-      return res.status(400).send("ID unknown : " + req.params.id);
+      return res.status(400).send("Non autorisé");
     try{
         const user = await UserModel.create({pseudo , email , password , role})
         //creation utlisateur renvoie de l'id
@@ -134,7 +134,7 @@ module.exports = {
   deleteUserAdmin: async (req, res) => {
     const admin = await UserModel.findOne({ _id: req.params.id })
     if (!admin && admin.role === "admin")
-      return res.status(400).send("ID unknown : " + req.params.id);
+      return res.status(400).send("Non autorisé");
     try {
       await UserModel.deleteOne({ _id: req.params.id })
       return res.status(200).json({ message: "utlisateur bien supprimer" })

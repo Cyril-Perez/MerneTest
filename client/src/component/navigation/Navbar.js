@@ -36,11 +36,11 @@ const Navbar = ()=>{
     return (
         <nav className={`navigation ${valid ? "active" : "no-active"}`}>         
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><img src={`${process.env.PUBLIC_URL}/images/img-g/lelephant.png`} alt="logo website" className="img-logo-navbar"/> </Link>
-                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualités` }}><p>Ele'News</p></Link>
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualites` }}><p>Ele'News</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Publications</p></Link>
-                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualités` }}><p>Actualités</p></Link>
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualites` }}><p>Actualités</p></Link>
                 { context.uId ? <img src={`${process.env.PUBLIC_URL}/images/img-g/exit.png`} alt="icon-logout" onClick={handleDisconnect} className="img-logout"/> : <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Connexion</p></Link>}
                 <img onClick={handleChangeValid} src={`${process.env.PUBLIC_URL}/images/img-g/menu.png`} alt="icon-menu" className="burger-button"/>
         </nav>

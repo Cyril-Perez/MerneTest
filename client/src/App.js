@@ -15,7 +15,7 @@ import ErrorLogProfil from "./component/errorVersion/error.profil.js/error.log.p
 import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
-
+import ArticlesPages from "./component/pages/ArticlesPages";
 
 
 function App() {
@@ -54,6 +54,7 @@ function App() {
       <Navbar/>
           <Routes>
               <Route path="/" element={<Home/>}/>
+              <Route path="/actualites" element={<ArticlesPages/>}/>
               <Route path="/profil/:id" element={ acces ? <Profil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>

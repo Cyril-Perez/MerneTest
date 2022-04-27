@@ -430,3 +430,79 @@ header{
         font-size: 1.4rem;
     }
 }
+
+
+/*------------------------ArticlePages.css----------------------------*/
+
+/* barre bleu logo */
+.container-image-article{
+   display: flex;
+   justify-content: center;
+    margin: 50px auto;
+    margin-bottom: 10px;
+    width: 1300px;
+    height: 200px;
+    background-color: rgba(38,23,88);
+    border-radius: 25px;
+}
+
+.logo-page-article{
+    height: 196px;
+    
+}
+
+/*div categorie*/
+.container-categorie{
+    width: 1300px;
+    margin: 50px auto;
+}
+
+.title-categorie{
+    font-size: 2.4rem;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    text-align: center;
+    background-color: rgba(38,23,88);
+    width: 400px;
+    margin: 0px auto;
+    padding: 25px;
+    border-radius: 12.5px;
+}
+/* barre catégorie filtre*/
+.separation-categorie-filter{
+    background-color: rgba(38,23,88);
+    width: 800px;
+    height: 3px;
+    margin: 0px auto;
+}
+
+/*button filter categorie*/
+.container-categorie-button-filtre{
+    width: 1300px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+.container-categorie-button-filtre button{
+    color: whitesmoke;
+    padding: 20px;
+    background-color: rgba(38,23,88);
+    width: 150px;
+}
+
+/*response article page*/
+@media screen and (max-width : 1301px) {
+    .container-image-article{
+        margin: 0px;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .container-categorie{
+        margin: 0px;
+        width: 100%;
+    } 
+    .title-categorie{
+        border-radius: 0px;
+    }
+}
+
