@@ -1,0 +1,14 @@
+.one-article{
+    height: 395px;
+    width: 275px;
+    border: 1px solid black;
+}
+.img-article{
+    width: 100%;
+    height: 122px;
+}
+.separation-date-article{
+    height: 1px;
+    width: 100%;
+    background-color: rgba(38,23,88);
+}

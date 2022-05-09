@@ -506,3 +506,11 @@ header{
     }
 }
 
+/*articles post*/
+.container-articles-post{
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

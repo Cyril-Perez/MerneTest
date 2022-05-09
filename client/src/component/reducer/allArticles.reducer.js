@@ -3,8 +3,9 @@ import { GET_ARTICLES } from "../action/action.actu";
 const initialState = [
     {
         _id : "",
-        pseudo : "",
-        nom : "",
+        title : "",
+        message : "",
+        createdAt : ""
     }
 ]
 

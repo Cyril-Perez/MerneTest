@@ -16,6 +16,7 @@ import ViewsPost from "./component/pages/viewsPost/ViewsPost";
 import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
 import ArticlesPages from "./component/pages/ArticlesPages";
+import { getActu } from "./component/action/action.actu";
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
   useEffect(async()=>{
     //recuperation des utilisateur
     dispatch(getAllUsers())
+    //recuperation articles
+    dispatch(getActu())
     //recuperation des 3 dernier posts pour le scroll
     dispatch(getPost(3))
     //recuperation de l'essemble des posts

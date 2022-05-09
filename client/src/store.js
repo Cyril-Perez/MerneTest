@@ -5,11 +5,14 @@ import fetchReducer from "./component/reducer/fetchReducer"
 import AllUsers from "./component/reducer/allUsers.reducer";
 import postReducer from "./component/reducer/post.reducer";
 import allPostsReducer from "./component/reducer/allPosts.reducer";
+import allArticles from "./component/reducer/allArticles.reducer"
+
 const allReducers = combineReducers({
     fetchReducer,
     AllUsers,
     postReducer,
     allPostsReducer,
+    allArticles
 }) 
 
 const store = createStore(

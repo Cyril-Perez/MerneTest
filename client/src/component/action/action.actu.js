@@ -10,9 +10,8 @@ export const getActu = ()=>{
       .then((res)=>{
         if(res.data.errors){
           console.log("erreur");
-        } else{
-            
-         dispatch({type : GET_ARTICLES , payload : res})
+        } else{            
+         dispatch({type : GET_ARTICLES , payload : res.data})
         }
       })
       .catch((err)=>{   console.log(err) })
