@@ -10,7 +10,7 @@ const ArticlesPages = ()=>{
     const [categorie, setCategorie] = useState("Nouveautés")
     const [load, setLoad] = useState(false)
 
-    const [arrayArticles, setArrayArticles] = useState([])
+    const [arrayArticles, setArrayArticles] = useState(allArticles)
 
     const dispatch = useDispatch()
 
@@ -43,6 +43,37 @@ const ArticlesPages = ()=>{
         
     },[allArticles])
 
+    const handleClickFilterArticles = (e)=>{
+            switch (e.target.id) {
+                case "categorie-new-article":
+                    let newsArray = [allArticles[0],allArticles[1],allArticles[2]]
+                    setCategorie("Nouveautés")
+                    setArrayArticles(newsArray)                    
+                    break;
+
+                case "categorie-sport-article":
+                    let newsArraySport = [...allArticles].filter((item)=> item.categorie === "sport")
+                    setCategorie("Sport")
+                    setArrayArticles(newsArraySport)
+                    break;
+
+                case "categorie-economie-article":
+                    let newsArrayEco = [...allArticles].filter((item)=> item.categorie === "economie")
+                    setCategorie("Economie")
+                    setArrayArticles(newsArrayEco)
+                    break;
+
+                case "categorie-divers-article":
+                    let newsArrayDivers = [...allArticles].filter((item)=> item.categorie === "divertissement")
+                    setCategorie("Divertissement")
+                    setArrayArticles(newsArrayDivers)
+                    break;
+            
+                default:
+                    break;
+            }
+    }
+
         return (
             <section className="Nouveautés">
                 <div className="container-image-article">
@@ -53,10 +84,10 @@ const ArticlesPages = ()=>{
                 </div>
                 <div className="separation-categorie-filter"></div>
                 <div className="container-categorie-button-filtre">
-                    <button>Nouveautés</button>
-                    <button>Sport</button>
-                    <button>Economie</button>
-                    <button>Divertissement</button>
+                    <button onClick={handleClickFilterArticles} id="categorie-new-article">Nouveautés</button>
+                    <button onClick={handleClickFilterArticles} id="categorie-sport-article">Sport</button>
+                    <button onClick={handleClickFilterArticles} id="categorie-economie-article">Economie</button>
+                    <button onClick={handleClickFilterArticles} id="categorie-divers-article">Divertissement</button>
                 </div>
                 <div className="container-articles-post">
                     {
@@ -68,7 +99,7 @@ const ArticlesPages = ()=>{
                                     title={item.title}
                                     message={item.message}
                                     categorie={item.categorie}
-                                    date={`Crée le ${configDate(item.createdAt)}`}                                   
+                                    date={configDate(item.createdAt)}                                   
                             />
                       })   : "Chargement..."
                     }
