@@ -91,15 +91,18 @@ const ArticlesPages = ()=>{
                 </div>
                 <div className="container-articles-post">
                     {
-                      load && allArticles[1] ?  arrayArticles.map((item)=>{
+                      load && allArticles[1] ? arrayArticles.map((item)=>{
                           console.log(item.createdAt)
                             return <Article
                                     key={item._id}
+                                    idArticle={item._id}
                                     pics={item.picture}
                                     title={item.title}
                                     message={item.message}
                                     categorie={item.categorie}
-                                    date={configDate(item.createdAt)}                                   
+                                    date={configDate(item.createdAt)}
+                                    likers={item.likers.length}
+                                    articleLike={item.likers}                                   
                             />
                       })   : "Chargement..."
                     }

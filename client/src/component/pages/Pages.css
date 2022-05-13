@@ -482,6 +482,7 @@ header{
     margin: 20px auto;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .container-categorie-button-filtre button{
     color: whitesmoke;
@@ -491,6 +492,14 @@ header{
     letter-spacing: 1px;
     font-weight: 700;
     cursor: pointer;
+}
+/*articles post*/
+.container-articles-post{
+    width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /*response article page*/
@@ -507,13 +516,30 @@ header{
     .title-categorie{
         border-radius: 0px;
     }
+    .container-categorie-button-filtre{
+        margin: 20px 0px 20px 0px;
+        width: 100%;
+    }
+    .container-articles-post{
+        margin: 0px;
+        width: 100%;
+    }
 }
 
-/*articles post*/
-.container-articles-post{
-    width: 1300px;
-    margin: 0px auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+@media screen and (max-width : 825px) {
+    .separation-categorie-filter{
+        margin: 0px;
+        width: 100%;
+    }
 }
+@media screen and (max-width : 550px) {
+    .title-categorie{
+        margin: 0px;
+        width: 100%;
+        border-radius: 0px;
+        font-size: 1.8rem;
+    }
+}
+
+
+

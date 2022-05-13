@@ -17,6 +17,7 @@ import ViewsProfil from "./component/pages/viewsProfil/ViewsProfil";
 import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
 import ArticlesPages from "./component/pages/ArticlesPages";
 import { getActu } from "./component/action/action.actu";
+import ViewsArticle from "./component/pages/viewsArticle/ViewsArticle";
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
               <Route path="/profil/views/post/:id" element={ acces ? <ViewsPost/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
+              <Route path="/actualites/views/article/:id" element={ acces ? <ViewsArticle/> : <ErrorLogProfil/>}/>
           </Routes>
     </AppContext.Provider>
   );
