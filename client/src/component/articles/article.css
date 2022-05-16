@@ -23,6 +23,7 @@
 .img-article{
     width: 100%;
     height: 122px;
+    object-fit: cover;
 }
 .txt-article{
     height: 100px;

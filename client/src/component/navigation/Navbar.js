@@ -36,7 +36,7 @@ const Navbar = ()=>{
     return (
         <nav className={`navigation ${valid ? "active" : "no-active"}`}>         
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><img src={`${process.env.PUBLIC_URL}/images/img-g/lelephant.png`} alt="logo website" className="img-logo-navbar"/> </Link>
-                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualites` }}><p>Ele'News</p></Link>
+                <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `actualites` }}><p>ELE'News</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Accueil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to={{pathname : `profil/${context.uId}` }}><p>Profil</p></Link>
                 <Link style={{textDecoration: "none" , color : "black"}} to="/"><p>Publications</p></Link>

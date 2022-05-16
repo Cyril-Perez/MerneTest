@@ -1,0 +1,105 @@
+.container-views-article{
+    width: 1000px;
+    margin: 50px auto;
+
+}
+.img-views-article{
+    width: 100%;
+    object-fit: cover;
+}
+.container-views-article-title{
+
+    display: flex;
+}
+.left-title-article{
+    height: auto;
+    width: 5px;
+    background-color: rgba(38,23,88);
+}
+.container-views-article-date-title{
+    padding-left: 10px;
+}
+.container-views-article-date-title h1{
+    font-size: 2.6rem;
+    letter-spacing: 1px;
+
+}
+.fast-read-txt{
+    background-color: rgba(38,23,88);
+    color: whitesmoke;
+    width: 185px;
+    margin: 7px 0px 7px 0px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.views-article-txt-date{
+    color: rgba(38,23,88);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 0px 7px 0px;
+    
+}
+.views-article-txt-date span {
+    color: rgb(167, 6, 6);
+}
+.views-article-message{
+    margin-top: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgb(77, 74, 74);
+    line-height: 50px;
+    border-left: 5px solid rgba(38,23,88);
+    padding-left: 15px;
+}
+.container-views-article-likers{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.img-views-like-unlike-article{
+    cursor: pointer;  
+    height: 40px;
+    width: 40px;
+}
+.views-count-likers {
+    padding-right: 7px;
+    font-size: 1.7rem;
+}
+.views-txt-thanks{
+    margin-top: 15px;
+    letter-spacing: 1px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: rgba(38,23,88);
+}
+.views-txt-thanks span {
+    color: rgb(167, 6, 6);
+}
+
+@media screen and (max-width : 1020px) {
+    .container-views-article{
+        width: 100%;
+        margin: 0px;
+    }
+    .container-views-article-likers{
+        padding-left: 7px;
+    }
+    .views-txt-thanks{
+        padding-left: 7px;
+
+    }
+}
+@media screen and (max-width : 780px) {
+    .container-views-article-date-title h1{
+        font-size: 2.3rem;
+    }
+    .fast-read-txt{
+    width: 185px;
+    padding: 3px;
+    font-size: 1rem;
+    }
+}

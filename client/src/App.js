@@ -18,6 +18,7 @@ import ViewsFollow from "./component/pages/viewsFollow/ViewsFollow";
 import ArticlesPages from "./component/pages/ArticlesPages";
 import { getActu } from "./component/action/action.actu";
 import ViewsArticle from "./component/pages/viewsArticle/ViewsArticle";
+import NotFound from "./component/404/NotFound";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
               <Route path="/profil/views/profil/:id" element={ acces ? <ViewsProfil/> : <ErrorLogProfil/>}/>
               <Route path="/profil/views/follow/:id" element={ acces ? <ViewsFollow/> : <ErrorLogProfil/>}/>
               <Route path="/actualites/views/article/:id" element={ acces ? <ViewsArticle/> : <ErrorLogProfil/>}/>
+              <Route path="/error/notFound" element={<NotFound/>}/>
           </Routes>
     </AppContext.Provider>
   );
